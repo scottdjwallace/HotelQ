@@ -32,19 +32,76 @@
 
 <body>
 
+  <?php
+   //Create a user session or resume an existing one\
+   session_start();
+  ?>
+  <?php
+    //check if the user is already logged in and has an active session
+    if(isset($_SESSION['id'])){
+      //Redirect the browser to the profile editing page and kill this page.
+      header("Location: home.php");
+      die();
+    }
+  ?>
+
+  <?php
+    //check if the login form has been submitted
+    if(isset($_POST['loginBtn'])){
+      // include database connection
+      include_once './actions/conn.php';
+      // SELECT query
+      $query = "SELECT member_id FROM member WHERE email=? AND password=?";
+      // prepare query for execution
+      if($stmt = $con->prepare($query)){
+        // bind the parameters. This is the best way to prevent SQL injection hacks.
+        $stmt->bind_Param("ss", $_POST['email'], $_POST['password']);
+        // Execute the query
+        $stmt->execute();
+
+        /* resultset */
+        $result = $stmt->get_result();
+
+        // Get the number of rows returned
+        $num = $result->num_rows;;
+
+        if($num>0){
+          //If the username/password matches a user in our database
+          //Read the user details
+          $myrow = $result->fetch_assoc();
+          //Create a session variable that holds the user's id
+          $_SESSION['id'] = $myrow['id'];
+          //Redirect the browser to the profile editing page and kill this page.
+          header("Location: home.php");
+          die();
+         } else {
+          //If the username/password doesn't matche a user in our database
+          // Display an error message and the login form
+          echo "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Login Failed!</strong> Please login with the correct credentials.</div>";
+         }
+     } else {
+       echo "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Login Failed!</strong> Please login with the correct credentials.</div>";
+     }
+   }
+  ?>
+
+
+
   <!-- Navigation -->
   <div class="navbar navbar-default navbar-fixed-top nav-login">
     <div class="container">
         <center>
             <div class="navbar-collapse collapse" id="navbar-main">
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" name='login' id='login' action='index.php' method='post'>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-default">Sign In</button>
+                    <div class="form-group">
+                      <input class="btn btn-default" type='submit' id='loginBtn' name='loginBtn' value='Sign In' />
+                    </div>
                 </form>
             </div>
         </center>
@@ -58,7 +115,7 @@
             <h1>HotelQ</h1>
             <h3>Rent unique places to stay from Queen's Alumnae.</h3>
             <br>
-            <a href="#login" class="btn btn-light btn-lg">Sign Up</a>
+            <a href="register.php" class="btn btn-light btn-lg">Sign Up</a>
         </div>
     </header>
 
