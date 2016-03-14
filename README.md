@@ -4,8 +4,16 @@ To Do
 
 ####index.php
 * Fix failed login notification
- 
+
 ####register.php
-* actions/register_member.php form
-* fill out faculties, and degrees drop downs
-* add china.png background
+* fix drop down results in register_member form
+* cancel will just remove email and password
+
+####home.php
+* content and links to admin and member sections
+
+
+#### Future Improvements
+* Change password
+* Input Verification and Validation
+* Better db id generation

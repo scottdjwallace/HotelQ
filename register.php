@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HotelQ</title>
+    <title>HotelQ - Register</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,11 +40,12 @@
           <h2><strong>Join HotelQ</strong>
           </h2>
           <p>Welcome to HotelQ, rent and list unique places to stay from Queen's Alumnae.</p>
+          <p><i>All fields required.</i></p>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-4 col-lg-offset-4 text-center">
-          <form name='register' id='register' action='action/register_member.php' method='post'>
+          <form name='register' id='register' action='actions/register_member.php' method='post'>
               <div class="form-group">
                   <input type="text" maxlength="21" required class="form-control" name="email" placeholder="Email">
               </div>
@@ -72,18 +73,7 @@
               </div>
 
               <div class="form-group">
-                Faculty: &nbsp;
-                <select name="faculty">
-                  <option value="default">Default</option>
-                </select>
 
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Degree: &nbsp;
-                <select name="degree">
-                  <option value="default">Default</option>
-                </select>
-              </div>
-
-              <div class="form-group">
                 Select an Avatar: &nbsp;
                 <select name="avatar">
                   <option value="default">Default</option>
@@ -92,6 +82,45 @@
                   <option value="city">City</option>
                   <option value="pizza">Pizza</option>
                 </select>
+
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Degree: &nbsp;
+                <select name="degree">
+                  <option value="bsc">BSc</option>
+                  <option value="bfa">BFA</option>
+                  <option value="beng">BEng</option>
+                  <option value="bphe">BPHE</option>
+                  <option value="ba">BA</option>
+                  <option value="bcmp">BCmp</option>
+                  <option value="bcomm">BComm</option>
+                  <option value="bscn">BScN</option>
+                  <option value="bed">BEd</option>
+                  <option value="msc">MSc</option>
+                  <option value="meng">MEng</option>
+                  <option value="phd">PhD</option>
+                  <option value="bkin">BKin</option>
+                  <option value="bmus">BMus</option>
+                  <option value="mba">MBA</option>
+                  <option value="ma">MA</option>
+                  <option value="masc">MASc</option>
+                  <option value="med">MEd</option>
+                  <option value="llm">LLM</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                Faculty: &nbsp;
+                <select name="faculty">
+                  <option value="artssci">Arts & Science</option>
+                  <option value="eng">Engineering</option>
+                  <option value="phe">Physical Health Education</option>
+                  <option value="comp">Computing</option>
+                  <option value="bus">Business</option>
+                  <option value="nurs">Nursing</option>
+                  <option value="edu">Education</option>
+                  <option value="kin">Kinesiology</option>
+                  <option value="heal">Health Sciences</option>
+                  <option value="pol">Policy Studies</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -99,7 +128,7 @@
               </div>
 
           </form>
-          <hr class="small">
+
 
         </div>
       </div>

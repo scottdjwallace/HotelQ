@@ -9,22 +9,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img alt="Brand" src="./img/hotelq_logo_40.png"></a>
+      <a class="navbar-brand" href="home.php"><img alt="Brand" src="./img/hotelq_logo_40.png"></a>
     </div>
+
+    <!-- <a>HotelQ</a> -->
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Find Accomodations</a></li>
-        <li><a href="#">Manage My Properties</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Update Profile</a></li>
-            <li><a href="#">Cancel Membership</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Logout</a></li>
+      <ul class="nav navbar-nav navbar-right nav-hotelq">
+        <li><a href="home.php">Home</a></li>
+        <li><a href="search.php">Find Accomodations</a></li>
+        <li><a href="bookings.php">My Bookings</a></li>
+        <li><a href="properties.php">Manage My Properties</a></li>
+        <li><a href="settings.php">Settings</a></li>
+        <li><a href="index.php?logout=1">Logout</a></li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
