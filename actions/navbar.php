@@ -18,9 +18,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right nav-hotelq">
         <li><a href="home.php">Home</a></li>
-        <li><a href="search.php">Find Accomodations</a></li>
+        <li><a href="search.php">Search</a></li>
         <li><a href="bookings.php">My Bookings</a></li>
-        <li><a href="properties.php">Manage My Properties</a></li>
+        <li><a href="properties.php">My Properties</a></li>
         <li><a href="settings.php">Settings</a></li>
         <li><a href="index.php?logout=1">Logout</a></li>
 

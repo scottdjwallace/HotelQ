@@ -14,7 +14,7 @@ body {
 /*     padding-top: 50px; */
 
 body {
-    font-family: font-family: 'Catamaran', sans-serif;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .text-vertical-center {
@@ -128,7 +128,7 @@ hr.small {
 }
 
 .nav-hotelq {
-  background-color: rgb(32,56,92);
+  background-color: #337ab7;
   border: 0 !important;
   font-family: 'Catamaran', sans-serif;
 }
@@ -143,6 +143,14 @@ hr.small {
 
 .navbar-brand {
   padding-top: 5px;
+}
+
+.navbar-padding {
+  padding-top: 50px;
+}
+
+.bottom-home-padding {
+  padding-top: 280px;
 }
 
 * {

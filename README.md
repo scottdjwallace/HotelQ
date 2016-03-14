@@ -11,6 +11,7 @@ To Do
 
 ####home.php
 * content and links to admin and member sections
+* turn font awesome into links 
 
 
 #### Future Improvements
