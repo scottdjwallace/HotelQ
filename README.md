@@ -8,6 +8,7 @@ To Do
 ####register.php
 * fix drop down results in register_member form
 * cancel will just remove email and password
+* fix spacing
 
 ####home.php
 * content and links to admin and member sections
