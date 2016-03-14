@@ -12,6 +12,7 @@ To Do
 ####home.php
 * content and links to admin and member sections
 * turn font awesome into links 
+* add admin and premium links
 
 
 #### Future Improvements
