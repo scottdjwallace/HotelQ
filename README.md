@@ -7,13 +7,19 @@ To Do
 
 ####register.php
 * fix drop down results in register_member form
-* cancel will just remove email and password
 * fix spacing
 
 ####home.php
 * content and links to admin and member sections
 * turn font awesome into links 
 * add admin and premium links
+
+####Pages To Do
+* settings
+* my bookings
+* my properties, list new, update property
+* search
+* admin, manage members & properties, admin reports
 
 
 #### Future Improvements
