@@ -13,7 +13,7 @@
 
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $avatar = $_POST['avatar'] + ".png";
+  $avatar = $_POST['avatar'];
   $balance = 0;
   $phone_number = $_POST['phone_number'];
   $grad_year = $_POST['grad_year'];
@@ -23,97 +23,99 @@
   $area_code = $_POST['area_code'];
   $is_admin = false;
   // generate faculty_id
+
+  //$faculties = array('artsci','eng','phe','comp','bus','nurs','edu','kin','heal','pol',);
   $faculty = $_POST['faculty'];
   $fac_id = "300";
-  if ($faculty="artsci") {
+  if ($faculty=="artsci") {
     $fac_id = "301";
   }
-  elseif ($faculty="eng") {
+  elseif ($faculty=="eng") {
     $fac_id = "302";
   }
-  elseif ($faculty="phe") {
+  elseif ($faculty=="phe") {
     $fac_id = "303";
   }
-  elseif ($faculty="comp") {
+  elseif ($faculty=="comp") {
     $fac_id = "304";
   }
-  elseif ($faculty="bus") {
+  elseif ($faculty=="bus") {
     $fac_id = "305";
   }
-  elseif ($faculty="nurs") {
+  elseif ($faculty=="nurs") {
     $fac_id = "306";
   }
-  elseif ($faculty="edu") {
+  elseif ($faculty=="edu") {
     $fac_id = "307";
   }
-  elseif ($faculty="kin") {
+  elseif ($faculty=="kin") {
     $fac_id = "308";
   }
-  elseif ($faculty="heal") {
+  elseif ($faculty=="heal") {
     $fac_id = "309";
   }
-  elseif ($faculty="pol") {
+  elseif ($faculty=="pol") {
     $fac_id = "310";
   }
 
   // degree -> id
   $degree = $_POST['degree'];
   $deg_id = "200";
-  if ($degree="bsc") {
+  if ($degree=="bsc") {
     $deg_id = "201";
   }
-  elseif ($degree="bfa") {
+  elseif ($degree=="bfa") {
     $deg_id = "202";
   }
-  elseif ($degree="beng") {
+  elseif ($degree=="beng") {
     $deg_id = "203";
   }
-  elseif ($degree="bphe") {
+  elseif ($degree=="bphe") {
     $deg_id = "204";
   }
-  elseif ($degree="ba") {
+  elseif ($degree=="ba") {
     $deg_id = "205";
   }
-  elseif ($degree="bcmp") {
+  elseif ($degree=="bcmp") {
     $deg_id = "206";
   }
-  elseif ($degree="bcomm") {
+  elseif ($degree=="bcomm") {
     $deg_id = "207";
   }
-  elseif ($degree="bscn") {
+  elseif ($degree=="bscn") {
     $deg_id = "208";
   }
-  elseif ($degree="bed") {
+  elseif ($degree=="bed") {
     $deg_id = "209";
   }
-  elseif ($degree="msc") {
+  elseif ($degree=="msc") {
     $deg_id = "210";
   }
-  elseif ($degree="meng") {
+  elseif ($degree=="meng") {
     $deg_id = "211";
   }
-  elseif ($degree="phd") {
+  elseif ($degree=="phd") {
     $deg_id = "212";
   }
-  elseif ($degree="bkin") {
+  elseif ($degree=="bkin") {
     $deg_id = "213";
   }
-  elseif ($degree="bmus") {
+  elseif ($degree=="bmus") {
     $deg_id = "214";
   }
-  elseif ($degree="mba") {
+  elseif ($degree=="mba") {
     $deg_id = "215";
   }
-  elseif($degree="ma") {
+  elseif($degree=="ma") {
     $deg_id = "216";
   }
-  elseif($degree="masc") {
+  elseif($degree=="masc") {
     $deg_id = "217";
   }
-  elseif($degree="med") {
+  elseif($degree=="med") {
     $deg_id = "218";
   }
-  elseif($degree="llm") {
+  elseif($degree=="llm") {
     $deg_id = "219";
   }
 

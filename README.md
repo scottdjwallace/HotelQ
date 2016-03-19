@@ -6,7 +6,7 @@
 * Fix failed login notification (cosmetic)
 
 ####Register Page (register.php)
-* finish register_member form, needs to get selected index from the dropdown menus
+* finish register_member form, fix avatar dropdown
 
 ####Home Page (home.php)
 * turn font awesome into links (cosmetic)
