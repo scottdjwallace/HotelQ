@@ -21,8 +21,7 @@
   $city = $_POST['city'];
   $state = $_POST['state'];
   $area_code = $_POST['area_code'];
-  $is_admin = false;
-  // generate faculty_id
+  $is_admin = 0;
 
   //$faculties = array('artsci','eng','phe','comp','bus','nurs','edu','kin','heal','pol',);
   $faculty = $_POST['faculty'];
@@ -123,12 +122,16 @@
 	$query = "INSERT INTO member VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   $stmt = $con->prepare($query);
 
-  $stmt->bind_param('sss', $_POST['password'], $_POST['email'], $_POST['id']);
-  $stmt->bind_param('ssssissssssbss', $member_id, $email, $password, $avatar, $balance, $phone_number, $grad_year, $address, $city, $state, $area_code, $is_admin, $fac_id, $deg_id);
+  // problem here
+  $stmt->bind_param('ssssissssssiss', $member_id, $email, $password, $avatar, $balance, $phone_number, $grad_year, $address, $city, $state, $area_code, $is_admin, $fac_id, $deg_id);
 	// Execute the query
   if($stmt->execute()){
+    echo "<p>here</p>";
     header("Location: ../index.php");
     die();
+  }
+  else {
+    echo "<p>failed</p>";
   }
 
 ?>
