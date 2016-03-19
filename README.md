@@ -2,9 +2,6 @@
 
 ##To Do
 
-####Login Page (index.php)
-* Fix failed login notification (cosmetic)
-
 ####Register Page (register.php)
 * finish register_member form, fix avatar dropdown
 
@@ -58,7 +55,8 @@
 * booking and ratings per supplier, and
 * booking and ratings per property.
 
-
+####Cosmetic Improvements
+*Login Page (index.php) - Fix failed login notification (cosmetic)
 
 #### Future Improvements
 * Change password
