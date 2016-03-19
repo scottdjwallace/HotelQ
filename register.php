@@ -83,7 +83,7 @@
                   <option value="pizza">Pizza</option>
                 </select>
 
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Degree: &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; Degree: &nbsp;
                 <select name="degree">
                   <option value="bsc">BSc</option>
                   <option value="bfa">BFA</option>

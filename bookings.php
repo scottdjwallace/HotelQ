@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HotelQ</title>
+    <title>HotelQ - My Bookings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,13 +37,28 @@
    session_start();
   ?>
 
+  <?php include_once('actions/navbar.php') ?>
+
   <?php
     if(isset($_SESSION['member_id'])){
-      // include database connection
-      // include_once 'config/connection.php';
 
-      // QUERY IF PREMIUM
-      // QUERY IF ADMIN
+      // SELECT query
+      $query = "SELECT * FROM booking WHERE member_id=?";
+      $stmt = $con->prepare($query); // ERROR HERE
+      $stmt->bind_Param("s", $_SESSION['member_id']);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $myrow = $result->fetch_assoc();
+
+      $num = $result->num_rows;;
+
+		  if($num>0){
+        echo $myrow['booking_id'];
+      }
+      else {
+        // echo no bookings to show
+      }
+
 
     } else {
       //User is not logged in. Redirect the browser to the login index.php page and kill this page.
@@ -51,17 +66,6 @@
       die();
     }
   ?>
-
-  <?php include_once('actions/navbar.php') ?>
-
-  <!-- Page code goes here -->
-
-
-
-
-
-
-
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
