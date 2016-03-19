@@ -10,13 +10,13 @@
 
 ####Home Page (home.php)
 * turn font awesome into links (cosmetic)
-* add admin and premium links
+* add admin and premium (extra) links
 
 ####Account Settings (settings.php)
 * fix drop downs to selected value
 * finish update_member.php form
 * cancel membership button & cancel_member form
-* cancel premium button
+* cancel premium button (extra) 
 
 ####My Bookings Page (bookings.php)
 * comment and rate booking
