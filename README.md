@@ -47,7 +47,7 @@
 * booking and ratings per property.
 
 ####Cosmetic Improvements
-* Login Page (index.php) - Fix failed login notification (cosmetic)
+* Login Page (index.php) - Fix failed login notification (cosmetic), make it go to a new page with the error message
 * Home Page (home.php) - turn font awesome into links (cosmetic)
 * Home Page (home.php) - Add premium member spot
 * Home Page (home.php) - move admin to dynamically in same row as the other 4
