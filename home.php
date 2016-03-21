@@ -124,33 +124,59 @@
               <!-- /.col-lg-10 -->
           </div>
           <!-- /.row -->
-          <div class="navbar-padding"></div>
+
+
 
           <?php
-            echo "<div class=\"bottom-home-padding\"></div>";
+
             include_once ('actions/conn.php');
 
-            // QUERY IF PREMIUM
-            // top banner echo'd if not PREMIUM
-            /*
-            if (premium && admin) {
-              // just admin stuff
+            $query = "SELECT member_id FROM premium WHERE member_id=?";
+            // prepare query for execution
+            if($stmt = $con->prepare($query)){
+              // bind the parameters. This is the best way to prevent SQL injection hacks.
+              $stmt->bind_Param("s", $_SESSION['member_id']);
+              // Execute the query
+              $stmt->execute();
+              $result = $stmt->get_result();
+              $num = $result->num_rows;;
+
+              if($num>0){
+                // they are a premium member
+                echo "<div class=\"navbar-padding\"></div>";
+                echo "<hr class=\"small\">";
+                echo "
+                  <div class=\"row text-center\">
+                    <div class=\"col-lg-3\"></div>
+                    <div class=\"col-lg-2\">
+                      <span class=\"fa-stack fa-4x\">
+                      <i class=\"fa fa-circle fa-stack-2x\"></i>
+                      <i class=\"fa fa-lock fa-stack-1x text-primary\"></i>
+                      </span>
+                    </div>
+                    <div class=\"col-lg-4\">
+                      <h4>
+                          <strong>Admin</strong>
+                      </h4>
+                      <p>Manage the service's members,accommodations and get reports on the service's use.</p>
+                      <a href=\"admin.php\" class=\"btn btn-dark\">Manage Service</a>
+                    </div>
+                    <div class=\"col-lg-3\"></div>
+                  </div>
+                ";
+                echo "<div class=\"navbar-padding\"></div>";
+                echo "<div class=\"navbar-padding\"></div>";
+                
+              }
+              else {
+                echo "<div class=\"bottom-home-padding\"></div>";
+              }
             }
-            elseif (admin && not premium)
-              // both
-            else { // not admin, premium
-              // add premium
-
-            }
-            */
-
-            // QUERY IF ADMIN
-            // then do an echo of the layout with 5 parts
-
-            // else echo 4 parts
 
 
           ?>
+
+
 
       </div>
       <!-- /.container -->

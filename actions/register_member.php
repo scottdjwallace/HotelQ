@@ -25,7 +25,7 @@
 
   //$faculties = array('artsci','eng','phe','comp','bus','nurs','edu','kin','heal','pol',);
   $faculty = $_POST['faculty'];
-  $fac_id = "300";
+  $fac_id = "301";
   if ($faculty=="artsci") {
     $fac_id = "301";
   }
@@ -59,7 +59,7 @@
 
   // degree -> id
   $degree = $_POST['degree'];
-  $deg_id = "200";
+  $deg_id = "201";
   if ($degree=="bsc") {
     $deg_id = "201";
   }
@@ -131,7 +131,7 @@
     die();
   }
   else {
-    echo "<p>failed</p>";
+    echo "$stmt->error";
   }
 
 ?>

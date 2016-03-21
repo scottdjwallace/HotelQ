@@ -138,50 +138,50 @@
 
               Select an Avatar: &nbsp;
               <select name="avatar">
-                <option value="default">Default</option>
-                <option value="hockey">Hockey</option>
-                <option value="car">Car</option>
-                <option value="city">City</option>
-                <option value="pizza">Pizza</option>
+                <option value="default" <?php if ($myrow['avatar'] == 'default') echo ' selected="selected"'; ?>>Default</option>
+                <option value="hockey" <?php if ($myrow['avatar'] == 'hockey') echo ' selected="selected"'; ?>>Hockey</option>
+                <option value="car" <?php if ($myrow['avatar'] == 'car') echo ' selected="selected"'; ?>>Car</option>
+                <option value="city" <?php if ($myrow['avatar'] == 'city') echo ' selected="selected"'; ?>>City</option>
+                <option value="pizza" <?php if ($myrow['avatar'] == 'pizza.') echo ' selected="selected"'; ?>>Pizza</option>
               </select>
 
               &nbsp; &nbsp; &nbsp; &nbsp; Degree: &nbsp;
               <select name="degree">
-                <option value="bsc">BSc</option>
-                <option value="bfa">BFA</option>
-                <option value="beng">BEng</option>
-                <option value="bphe">BPHE</option>
-                <option value="ba">BA</option>
-                <option value="bcmp">BCmp</option>
-                <option value="bcomm">BComm</option>
-                <option value="bscn">BScN</option>
-                <option value="bed">BEd</option>
-                <option value="msc">MSc</option>
-                <option value="meng">MEng</option>
-                <option value="phd">PhD</option>
-                <option value="bkin">BKin</option>
-                <option value="bmus">BMus</option>
-                <option value="mba">MBA</option>
-                <option value="ma">MA</option>
-                <option value="masc">MASc</option>
-                <option value="med">MEd</option>
-                <option value="llm">LLM</option>
+                <option value="bsc" <?php if ($myrow['deg_id'] == '201') echo ' selected="selected"'; ?>>BSc</option>
+                <option value="bfa" <?php if ($myrow['deg_id'] == '202') echo ' selected="selected"'; ?>>BFA</option>
+                <option value="beng" <?php if ($myrow['deg_id'] == '203') echo ' selected="selected"'; ?>>BEng</option>
+                <option value="bphe" <?php if ($myrow['deg_id'] == '204') echo ' selected="selected"'; ?>>BPHE</option>
+                <option value="ba" <?php if ($myrow['deg_id'] == '205') echo ' selected="selected"'; ?>>BA</option>
+                <option value="bcmp" <?php if ($myrow['deg_id'] == '206') echo ' selected="selected"'; ?>>BCmp</option>
+                <option value="bcomm" <?php if ($myrow['deg_id'] == '207') echo ' selected="selected"'; ?>>BComm</option>
+                <option value="bscn" <?php if ($myrow['deg_id'] == '208') echo ' selected="selected"'; ?>>BScN</option>
+                <option value="bed" <?php if ($myrow['deg_id'] == '209') echo ' selected="selected"'; ?>>BEd</option>
+                <option value="msc" <?php if ($myrow['deg_id'] == '210') echo ' selected="selected"'; ?>>MSc</option>
+                <option value="meng" <?php if ($myrow['deg_id'] == '211') echo ' selected="selected"'; ?>>MEng</option>
+                <option value="phd" <?php if ($myrow['deg_id'] == '212') echo ' selected="selected"'; ?>>PhD</option>
+                <option value="bkin" <?php if ($myrow['deg_id'] == '213') echo ' selected="selected"'; ?>>BKin</option>
+                <option value="bmus" <?php if ($myrow['deg_id'] == '214') echo ' selected="selected"'; ?>>BMus</option>
+                <option value="mba" <?php if ($myrow['deg_id'] == '215') echo ' selected="selected"'; ?>>MBA</option>
+                <option value="ma" <?php if ($myrow['deg_id'] == '216') echo ' selected="selected"'; ?>>MA</option>
+                <option value="masc" <?php if ($myrow['deg_id'] == '217') echo ' selected="selected"'; ?>>MASc</option>
+                <option value="med" <?php if ($myrow['deg_id'] == '218') echo ' selected="selected"'; ?>>MEd</option>
+                <option value="llm" <?php if ($myrow['deg_id'] == '219') echo ' selected="selected"'; ?>>LLM</option>
               </select>
             </div>
 
             <div class="form-group">
               Faculty: &nbsp;
               <select name="faculty">
-                <option value="artssci">Arts & Science</option>
-                <option value="eng">Engineering</option>
-                <option value="phe">Physical Health Education</option>
-                <option value="comp">Computing</option>
-                <option value="bus">Business</option>
-                <option value="nurs">Nursing</option>
-                <option value="edu">Education</option>
-                <option value="kin">Kinesiology</option>
-                <option value="heal">Health Sciences</option>
-                <option value="pol">Policy Studies</option>
+                <option value="artssci" <?php if ($myrow['fac_id'] == '301') echo ' selected="selected"'; ?>>Arts & Science</option>
+                <option value="eng" <?php if ($myrow['fac_id'] == '302') echo ' selected="selected"'; ?>>Engineering</option>
+                <option value="phe" <?php if ($myrow['fac_id'] == '303') echo ' selected="selected"'; ?>>Physical Health Education</option>
+                <option value="comp" <?php if ($myrow['fac_id'] == '304') echo ' selected="selected"'; ?>>Computing</option>
+                <option value="bus" <?php if ($myrow['fac_id'] == '305') echo ' selected="selected"'; ?>>Business</option>
+                <option value="nurs" <?php if ($myrow['fac_id'] == '306') echo ' selected="selected"'; ?>>Nursing</option>
+                <option value="edu" <?php if ($myrow['fac_id'] == '307') echo ' selected="selected"'; ?>>Education</option>
+                <option value="kin" <?php if ($myrow['fac_id'] == '308') echo ' selected="selected"'; ?>>Kinesiology</option>
+                <option value="heal" <?php if ($myrow['fac_id'] == '309') echo ' selected="selected"'; ?>>Health Sciences</option>
+                <option value="pol" <?php if ($myrow['fac_id'] == '310') echo ' selected="selected"'; ?>>Policy Studies</option>
               </select>
             </div>
             <hr class="small"></hr>
@@ -189,6 +189,11 @@
               <input class="btn btn-default btn-lg" type='submit' id='updateBtn' name='updateBtn' value='Update Account' />
             </div>
 
+        </form>
+        <form action="actions/cancel_member.php">
+          <div class="form-group">
+          <input class="btn btn-danger btn-lg" type='submit' id='deleteBtn' name='deleteBtn' value='Cancel Membership' />
+          </div>
         </form>
       </div>
     </div>

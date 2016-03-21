@@ -2,18 +2,9 @@
 
 ##To Do
 
-####Register Page (register.php)
-* finish register_member form, fix avatar dropdown
-
-####Home Page (home.php)
-* turn font awesome into links (cosmetic)
-* add admin and premium (extra) links
-
 ####Account Settings (settings.php)
-* fix drop downs to selected value
-* finish update_member.php form
-* cancel membership button & cancel_member form
-* cancel premium button (extra) 
+* finish update_member.php form, add balance
+* cancel_member form
 
 ####My Bookings Page (bookings.php)
 * comment and rate booking
@@ -56,7 +47,11 @@
 * booking and ratings per property.
 
 ####Cosmetic Improvements
-*Login Page (index.php) - Fix failed login notification (cosmetic)
+* Login Page (index.php) - Fix failed login notification (cosmetic)
+* Home Page (home.php) - turn font awesome into links (cosmetic)
+* Home Page (home.php) - Add premium member spot
+* Home Page (home.php) - move admin to dynamically in same row as the other 4
+* Settings (settings.php) - cancel premium button (extra) & form
 
 #### Future Improvements
 * Change password
