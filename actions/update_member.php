@@ -1,40 +1,17 @@
 <?php
-
-if(isset($_POST['updateBtn']) && isset($_SESSION['id'])){
- // include database connection
-   include_once 'actions/conn.php';
-
- $query = "UPDATE user SET password=?,email=? WHERE id=?";
-
- $stmt = $con->prepare($query);	$stmt->bind_param('sss', $_POST['password'], $_POST['email'], $_SESSION['id']);
- // Execute the query
-       if($stmt->execute()){
-           echo "Record was updated. <br/>";
-       }else{
-           echo 'Unable to update record. Please try again. <br/>';
-       }
-}
-
-?>
-
-<?php
   include_once 'conn.php';
-
-  //$query = "UPDATE member SET email=?,password=?,avatar=?, WHERE member_id=?";
 
   $email = $_POST['email'];
   $password = $_POST['password'];
   $avatar = $_POST['avatar'];
-  $balance = 0;
+  $balance = $_POST['balance'];
   $phone_number = $_POST['phone_number'];
   $grad_year = $_POST['grad_year'];
   $address = $_POST['address'];
   $city = $_POST['city'];
   $state = $_POST['state'];
   $area_code = $_POST['area_code'];
-  $is_admin = 0;
 
-  //$faculties = array('artsci','eng','phe','comp','bus','nurs','edu','kin','heal','pol',);
   $faculty = $_POST['faculty'];
   $fac_id = "301";
   if ($faculty=="artsci") {
@@ -129,20 +106,19 @@ if(isset($_POST['updateBtn']) && isset($_SESSION['id'])){
     $deg_id = "219";
   }
 
-  // add it to the database
-	$query = "INSERT INTO member VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  $query = "UPDATE member SET email=?, password=?, avatar=?, balance=?, phone_number=?, grad_year=?, address=?, city=?, state=?, area_code=?, fac_id=?, deg_id=? WHERE member_id=?";
+
   $stmt = $con->prepare($query);
 
-  // problem here
-  $stmt->bind_param('ssssissssssiss', $member_id, $email, $password, $avatar, $balance, $phone_number, $grad_year, $address, $city, $state, $area_code, $is_admin, $fac_id, $deg_id);
-	// Execute the query
+  // bind params
+  $stmt->bind_param('sssisssssssss', $email, $password, $avatar, $balance, $phone_number, $grad_year, $address, $city, $state, $area_code, $fac_id, $deg_id, $_SESSION['member_id']);
+
+  // Execute the query
   if($stmt->execute()){
-    echo "<p>here</p>";
-    header("Location: ../index.php");
+    header("Location: ../settings.php");
     die();
-  }
-  else {
-    echo "$stmt->error";
+  }else{
+      echo 'Unable to update record. Please try again. <br/>';
   }
 
 ?>

@@ -72,30 +72,6 @@
 
   ?>
 
-  <!-- Edit Account Form Here
-  <form name='editAccount' id='editProfile' action='actions/update_member.php' method='post'>
-      <table border='0'>
-          <tr>
-              <td>Username</td>
-              <td><input type='text' name='username' id='username' disabled  value="<?php echo $myrow['username']; ?>"  /></td>
-          </tr>
-          <tr>
-              <td>Password</td>
-               <td><input type='text' name='password' id='password'  value="<?php echo $myrow['password']; ?>" /></td>
-          </tr>
-  		<tr>
-              <td>Email</td>
-              <td><input type='text' name='email' id='email'  value="<?php echo $myrow['email']; ?>" /></td>
-          </tr>
-          <tr>
-              <td></td>
-              <td>
-                  <input type='submit' name='updateBtn' id='updateBtn' value='Update' />
-              </td>
-          </tr>
-      </table>
-  </form>
-  -->
   <section>
     <div class="container">
       <div class="row register">
@@ -109,29 +85,32 @@
       <div class="col-lg-4 col-lg-offset-4 text-center">
         <form name='updateMember' id='updateMember' action='actions/update_member.php' method='post'>
             <div class="form-group">
-                <input type="text" maxlength="21" class="form-control" name="email" value="<?php echo $myrow['email']; ?>">
+                <input type="text" maxlength="21" class="form-control" name="email" placeholder="Email Address" value="<?php echo $myrow['email']; ?>">
             </div>
             <div class="form-group">
-                <input type="password" maxlength="50" class="form-control" name="password" value="<?php echo $myrow['password']; ?>">
+                <input type="password" maxlength="50" class="form-control" name="password" placeholder="Password" value="<?php echo $myrow['password']; ?>">
             </div>
 
             <div class="form-group">
-                <input type="text" length="10" required class="form-control" name="phone_number" value="<?php echo $myrow['phone_number']; ?>">
+                <input type="text" length="10" required class="form-control" name="phone_number" placeholder="Phone Number" value="<?php echo $myrow['phone_number']; ?>">
             </div>
             <div class="form-group">
-                <input type="text" length="4" required class="form-control" name="grad_year" value="<?php echo $myrow['grad_year']; ?>">
+                <input type="text" length="4" required class="form-control" name="grad_year" placeholder="Grad Year" value="<?php echo $myrow['grad_year']; ?>">
             </div>
             <div class="form-group">
-                <input type="text" maxlength="25" required class="form-control" name="address" value="<?php echo $myrow['address']; ?>">
+                <input type="text" maxlength="25" required class="form-control" name="address" placeholder="Address" value="<?php echo $myrow['address']; ?>">
             </div>
             <div class="form-group">
-                <input type="text" maxlength="25" required class="form-control" name="city" value="<?php echo $myrow['city']; ?>">
+                <input type="text" maxlength="25" required class="form-control" name="city" placeholder="City" value="<?php echo $myrow['city']; ?>">
             </div>
             <div class="form-group">
-                <input type="text" length="2" required class="form-control" name="state" value="<?php echo $myrow['state']; ?>">
+                <input type="text" length="2" required class="form-control" name="state" placeholder="State/Province" value="<?php echo $myrow['state']; ?>">
             </div>
             <div class="form-group">
-                <input type="text" maxlength="6" required class="form-control" name="area_code" value="<?php echo $myrow['area_code']; ?>">
+                <input type="text" maxlength="6" required class="form-control" name="area_code" placeholder="Area Code" value="<?php echo $myrow['area_code']; ?>">
+            </div>
+            <div class="form-group">
+                <input type="int" maxlength="6" required class="form-control" name="balance" placeholder="Balance" value="<?php echo $myrow['balance']; ?>">
             </div>
 
             <div class="form-group">
@@ -184,7 +163,7 @@
                 <option value="pol" <?php if ($myrow['fac_id'] == '310') echo ' selected="selected"'; ?>>Policy Studies</option>
               </select>
             </div>
-            <hr class="small"></hr>
+            
             <div class="form-group">
               <input class="btn btn-default btn-lg" type='submit' id='updateBtn' name='updateBtn' value='Update Account' />
             </div>

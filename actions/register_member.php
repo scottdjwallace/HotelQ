@@ -126,7 +126,6 @@
   $stmt->bind_param('ssssissssssiss', $member_id, $email, $password, $avatar, $balance, $phone_number, $grad_year, $address, $city, $state, $area_code, $is_admin, $fac_id, $deg_id);
 	// Execute the query
   if($stmt->execute()){
-    echo "<p>here</p>";
     header("Location: ../index.php");
     die();
   }

@@ -131,7 +131,7 @@
 
             include_once ('actions/conn.php');
 
-            $query = "SELECT member_id FROM premium WHERE member_id=?";
+            $query = "SELECT member_id FROM member WHERE member_id=? AND is_admin";
             // prepare query for execution
             if($stmt = $con->prepare($query)){
               // bind the parameters. This is the best way to prevent SQL injection hacks.
@@ -166,7 +166,8 @@
                 ";
                 echo "<div class=\"navbar-padding\"></div>";
                 echo "<div class=\"navbar-padding\"></div>";
-                
+                echo "<div class=\"navbar-padding\"></div>";
+                echo "<div class=\"navbar-padding\"></div>";
               }
               else {
                 echo "<div class=\"bottom-home-padding\"></div>";
