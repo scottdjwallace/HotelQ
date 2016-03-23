@@ -171,6 +171,7 @@
               }
               else {
                 echo "<div class=\"bottom-home-padding\"></div>";
+                echo "<div class=\"navbar-padding\"></div>";
               }
             }
 
