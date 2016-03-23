@@ -1,4 +1,8 @@
 <?php
+  //Create a user session or resume an existing one
+  session_start();
+?>
+<?php
   include_once 'conn.php';
 
   $email = $_POST['email'];
@@ -106,7 +110,7 @@
     $deg_id = "219";
   }
 
-  $query = "UPDATE member SET email=?, password=?, avatar=?, balance=?, phone_number=?, grad_year=?, address=?, city=?, state=?, area_code=?, fac_id=?, deg_id=? WHERE member_id=?";
+  $query = "UPDATE member SET email=?, password=?, avatar=?, balance=?, phone_number=?, grad_year=?, address=?, city=?, state=?, area_code=?, fac_id=?, deg_id=? WHERE member.member_id=?";
 
   $stmt = $con->prepare($query);
 

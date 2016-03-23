@@ -3,7 +3,6 @@
 ##To Do
 
 ####Account Settings (settings.php)
-* finish update_member.php form, add balance
 * cancel_member form
 
 ####My Bookings Page (bookings.php)
