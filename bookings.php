@@ -120,6 +120,7 @@
           echo "
                 </div>
                 <div class=\"col-lg-1\"></div>
+                <hr></hr>
               </div>";
             }
 

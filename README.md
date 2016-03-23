@@ -6,6 +6,7 @@
 * comment and rate booking
 * cancel a booking
 * if none then link to booking page
+* clean up code a bit
 
 ####My Properties Page (properties.php)
 * list all their properties
