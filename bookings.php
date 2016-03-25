@@ -48,7 +48,7 @@
       include_once('actions/conn.php');
 
       // SELECT query
-      $query = "SELECT * FROM booking WHERE member_id=?";
+      $query = "SELECT * FROM booking NATURAL JOIN property WHERE member_id=?";
       $stmt = $con->prepare($query);
       $stmt->bind_Param("s", $_SESSION['member_id']);
       $stmt->execute();
@@ -69,23 +69,21 @@
               </div>
             </div>
             <div class=\"row text-center\">
-              <div class=\"col-lg-1\"></div>
-                <div class=\"col-lg-2\">
+                <div class=\"col-lg-3\">
                   <h4>Property Details</h4>
                 </div>
-                <div class=\"col-lg-2\">
+                <div class=\"col-lg-1\">
                   <h4>Status</h4>
                 </div>
                 <div class=\"col-lg-2\">
                   <h4>Booking Period</h4>
                 </div>
-                <div class=\"col-lg-2\">
+                <div class=\"col-lg-4\">
                   <h4>Comment & Rate</h4>
                 </div>
                 <div class=\"col-lg-2\">
                   <h4>Cancel Booking</h4>
                 </div>
-                <div class=\"col-lg-1\"></div>
               </div>
             <br>
         ";
@@ -93,15 +91,14 @@
         while($row = $result->fetch_assoc()){
           echo "
           <div class=\"row text-center\">
-            <div class=\"col-lg-1\"></div>
-            <div class=\"col-lg-2\">
+            <div class=\"col-lg-3\">
           ";
                 // Property details
-                echo $row['booking_id'];
+                echo $row['address'] . ", " . $row['city'] . ", " . $row['state'];
 
           echo "
           </div>
-          <div class=\"col-lg-2\">
+          <div class=\"col-lg-1\">
           ";
                 // status
                 echo $row['status'];
@@ -115,10 +112,28 @@
 
           echo "
           </div>
-          <div class=\"col-lg-2\">
+          <div class=\"col-lg-4\">
           ";
-                //comment
-                
+                //comment & rate
+          echo "
+            <form name='comment' id='comment' action='actions/test.php' method='post'>
+              <div class=\"form-group\">
+                <input type=\"text\" maxlength=\"140\" required class=\"form-control\" name=\"comment_text\" placeholder=\"Comment\">
+
+              <select name=\"rating\">
+                <option value=\"null\">Rating</option>
+                <option value=\"1\">1 Stars</option>
+                <option value=\"2\">2 Stars</option>
+                <option value=\"3\">3 Stars</option>
+                <option value=\"4\">4 Stars</option>
+                <option value=\"5\">5 Stars</option>
+              </select>
+
+                <input class=\"btn btn-default btn-sm\" type='submit' id='commentBtn' name='commentBtn' value='Submit' />
+              </div>
+            </form>
+            ";
+
           echo "
           </div>
           <div class=\"col-lg-2\">
@@ -128,7 +143,6 @@
 
           echo "
           </div>
-          <div class=\"col-lg-1\"></div>
           </div>
           <hr>
           ";

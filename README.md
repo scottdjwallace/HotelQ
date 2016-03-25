@@ -2,6 +2,9 @@
 
 ##To Do
 
+####My Bookings Page (bookings.php)
+* comment and rate booking
+* cancel a booking
 
 ####Update Property Page (update_property.php)
 * same as settings/register but for a single property
@@ -12,11 +15,6 @@
 * maps (maybe)
 * availability
 * request booking for a time
-
-####My Bookings Page (bookings.php)
-* comment and rate booking
-* cancel a booking
-* property details
 
 ####My Properties Page (properties.php)
 * list all their properties
@@ -38,11 +36,6 @@
 * booking activity per member
 * booking and ratings per supplier, and
 * booking and ratings per property.
-
-
-
-
-
 
 ####Cosmetic Improvements
 * Login Page (index.php) - Fix failed login notification (cosmetic), make it go to a new page with the error message
