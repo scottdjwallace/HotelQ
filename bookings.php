@@ -59,75 +59,85 @@
 
 		  if($num>0){
         // period, status, property details, comment, rate,cancel
-        echo "<section id=\"bookings\">
-                <div class=\"container\">
-                <div class=\"row register\">
-                  <div class=\"col-lg-10 col-lg-offset-1 text-center\">
-                    <h2><strong>My Bookings</strong>
-                    </h2>
-                    <hr class=\"small\"></hr>
-                  </div>
+        echo "
+        <section id=\"bookings\">
+          <div class=\"container\">
+            <div class=\"row register\">
+              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+                <h2><strong>My Bookings</strong></h2>
+                <hr class=\"small\"></hr>
+              </div>
+            </div>
+            <div class=\"row text-center\">
+              <div class=\"col-lg-1\"></div>
+                <div class=\"col-lg-2\">
+                  <h4>Property Details</h4>
                 </div>
-                <div class=\"row text-center\">
-                  <div class=\"col-lg-1\"></div>
-                  <div class=\"col-lg-2\">
-                    <h4>Property Details</h4>
-                  </div>
-                  <div class=\"col-lg-2\">
-                    <h4>Status</h4>
-                  </div>
-                  <div class=\"col-lg-2\">
-                    <h4>Booking Period</h4>
-                  </div>
-                  <div class=\"col-lg-2\">
-                    <h4>Comment & Rate</h4>
-                  </div>
-                  <div class=\"col-lg-2\">
-                    <h4>Cancel Booking</h4>
-                  </div>
-                  <div class=\"col-lg-1\"></div>
-                  </div>
+                <div class=\"col-lg-2\">
+                  <h4>Status</h4>
                 </div>
-                <br>
-              ";
+                <div class=\"col-lg-2\">
+                  <h4>Booking Period</h4>
+                </div>
+                <div class=\"col-lg-2\">
+                  <h4>Comment & Rate</h4>
+                </div>
+                <div class=\"col-lg-2\">
+                  <h4>Cancel Booking</h4>
+                </div>
+                <div class=\"col-lg-1\"></div>
+              </div>
+            <br>
+        ";
 
         while($row = $result->fetch_assoc()){
           echo "
-              <div class=\"row text-center\">
-                <div class=\"col-lg-1\"></div>
-                <div class=\"col-lg-2\">";
+          <div class=\"row text-center\">
+            <div class=\"col-lg-1\"></div>
+            <div class=\"col-lg-2\">
+          ";
                 // Property details
                 echo $row['booking_id'];
+
           echo "
-                </div>
-                <div class=\"col-lg-2\">";
+          </div>
+          <div class=\"col-lg-2\">
+          ";
                 // status
                 echo $row['status'];
+
           echo "
-                </div>
-                <div class=\"col-lg-2\">";
+          </div>
+          <div class=\"col-lg-2\">
+          ";
                 //period
                 echo $row['period'];
+
           echo "
-                </div>
-                <div class=\"col-lg-2\">";
+          </div>
+          <div class=\"col-lg-2\">
+          ";
                 //comment
+
           echo "
-                </div>
-                <div class=\"col-lg-2\">";
+          </div>
+          <div class=\"col-lg-2\">
+          ";
                 //cancel
                 echo "<button type=\"button\" action=\"actions/cancel_booking.php\" class=\"btn btn-danger\">Cancel</button>";
+
           echo "
-                </div>
-                <div class=\"col-lg-1\"></div>
-                <hr></hr>
-              </div>";
-            }
+          </div>
+          <div class=\"col-lg-1\"></div>
+          </div>
+          <hr>
+          ";
+        }
 
         echo "
-              </div>
-            </section>
-            ";
+        </div>
+        </section>
+        ";
 
       }
       else {
