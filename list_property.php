@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HotelQ - Search</title>
+    <title>HotelQ - List Property</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -49,8 +49,77 @@
   ?>
 
   <?php include_once('actions/navbar.php') ?>
+  <div class="navbar-padding"></div>
+  <div class="navbar-padding"></div>
+  <div class="navbar-padding"></div>
+  <div class="navbar-padding"></div>
 
   <!-- Page code goes here -->
+  <section>
+    <div class="container">
+      <div class="row register">
+        <div class="col-lg-10 col-lg-offset-1 text-center">
+          <h2><strong>List a Property</strong></h2>
+          <p><i>All fields required.</i></p>
+          <hr class="small">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 text-center">
+          <form name='listProperty' id='listProperty' action='actions/list_new_property.php' method='post'>
+
+
+              <div class="form-group">
+                Select a Type: &nbsp; &nbsp;
+                <select name="type">
+                  <option value="oneBed">1 Bedroom Apt</option>
+                  <option value="twoBed">2 Bedroom Apt</option>
+                  <option value="threeBed">3 Bedroom Apt</option>
+                  <option value="fourBed">4 Bedroom Apt</option>
+                  <option value="studio">Studio</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                  <input type="int" maxlength="10" required class="form-control" name="price" placeholder="Price per Week">
+              </div>
+              <div class="form-group">
+                  <input type="text" maxlength="25" required class="form-control" name="address" placeholder="Address">
+              </div>
+              <div class="form-group">
+                  <input type="text" maxlength="25" required class="form-control" name="city" placeholder="City" value="Seattle">
+              </div>
+              <div class="form-group">
+                  <input type="text" length="2" required class="form-control" name="state" placeholder="State/Province (Ex. ON)" value="WA">
+              </div>
+              <div class="form-group">
+                  <input type="text" maxlength="6" required class="form-control" name="area_code" placeholder="Area Code (Ex. H0H0H0)">
+              </div>
+              <div class="form-group">
+                District: &nbsp; &nbsp;
+                <select name="district">
+                  <option value="001">Fremont</option>
+                  <option value="002">Wallingford</option>
+                  <option value="003">Ballard</option>
+                  <option value="004">Queen Anne</option>
+                  <option value="005">Lower Queen Anne</option>
+                  <option value="006">Westlake</option>
+                  <option value="007">South Lake Union</option>
+                  <option value="008">Capitol Hill</option>
+                  <option value="009">Pike Place Market</option>
+                  <option value="010">Downtown</option>
+                  <option value="011">Pioneer Square</option>
+                </select>
+              </div>
+              <hr class="small">
+              <div class="form-group">
+                <input class="btn btn-default btn-lg" type='submit' id='listPropertyBtn' name='listPropertyBtn' value='List Property' />
+              </div>
+          </form>
+        </div>
+      </div>
+
+  </section>
 
 
 

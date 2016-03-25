@@ -167,7 +167,8 @@
                 echo "<div class=\"navbar-padding\"></div>";
                 echo "<div class=\"navbar-padding\"></div>";
                 echo "<div class=\"navbar-padding\"></div>";
-                echo "<div class=\"navbar-padding\"></div>";
+                echo "<div class=\"navbar-padding\"></div><br>";
+
               }
               else {
                 echo "<div class=\"bottom-home-padding\"></div>";

@@ -37,13 +37,131 @@
    session_start();
   ?>
 
+  <?php include_once('actions/navbar.php') ?>
+  <div class="navbar-padding"></div>
+  <div class="navbar-padding"></div>
+  <div class="navbar-padding"></div>
+
   <?php
     if(isset($_SESSION['member_id'])){
-      // include database connection
-      // include_once 'config/connection.php';
 
-      // QUERY IF PREMIUM
-      // QUERY IF ADMIN
+      include_once('actions/conn.php');
+
+      // SELECT query
+      $query = "SELECT * FROM owns NATURAL JOIN property WHERE member_id=?";
+      $stmt = $con->prepare($query);
+      $stmt->bind_Param("s", $_SESSION['member_id']);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      //$myrow = $result->fetch_assoc();
+
+      $num = $result->num_rows;;
+
+		  if($num>0){
+        // period, status, property details, comment, rate,cancel
+        echo "
+        <section id=\"properties\">
+          <div class=\"container\">
+            <div class=\"row register\">
+              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+                <h2><strong>My Properties</strong></h2>
+                <hr class=\"small\"></hr>
+              </div>
+            </div>
+            <div class=\"row text-center\">
+              <div class=\"col-lg-1\"></div>
+                <div class=\"col-lg-2\">
+                  <h4>Property Details</h4>
+                </div>
+                <div class=\"col-lg-2\">
+                  <h4>Status</h4>
+                </div>
+                <div class=\"col-lg-2\">
+                  <h4>Booking Period</h4>
+                </div>
+                <div class=\"col-lg-2\">
+                  <h4>Comment & Rate</h4>
+                </div>
+                <div class=\"col-lg-2\">
+                  <h4>Cancel Booking</h4>
+                </div>
+                <div class=\"col-lg-1\"></div>
+              </div>
+            <br>
+        ";
+
+        while($row = $result->fetch_assoc()){
+          echo "
+          <div class=\"row text-center\">
+            <div class=\"col-lg-1\"></div>
+            <div class=\"col-lg-2\">
+          ";
+                // Property details
+                echo $row['booking_id'];
+
+          echo "
+          </div>
+          <div class=\"col-lg-2\">
+          ";
+                // status
+                echo $row['status'];
+
+          echo "
+          </div>
+          <div class=\"col-lg-2\">
+          ";
+                //period
+                echo $row['period'];
+
+          echo "
+          </div>
+          <div class=\"col-lg-2\">
+          ";
+                //comment
+
+          echo "
+          </div>
+          <div class=\"col-lg-2\">
+          ";
+                //cancel
+                echo "<button type=\"button\" action=\"actions/cancel_booking.php\" class=\"btn btn-danger\">Cancel</button>";
+
+          echo "
+          </div>
+          <div class=\"col-lg-1\"></div>
+          </div>
+          <hr>
+          ";
+        }
+
+        echo "
+        <a  href=\"list_property.php\" ><button type=\"button\" class=\"btn btn-primary btn-lg\">List Another Property</button></a>
+        </div>
+        </section>
+        ";
+
+      }
+      else {
+        echo "
+        <section id=\"properties\">
+          <div class=\"container\">
+            <div class=\"row register\">
+              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+                <h2><strong>You currently have no properties listed.</strong></h2>
+                <hr class=\"small\"></hr>
+              </div>
+            </div>
+            <div class=\"row text-center\">
+              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+                <a href=\"list_property.php\">List a property now</a>
+              </div>
+            </div>
+            <br>
+          </div>
+        </section>
+        ";
+      }
+
 
     } else {
       //User is not logged in. Redirect the browser to the login index.php page and kill this page.
@@ -51,17 +169,6 @@
       die();
     }
   ?>
-
-  <?php include_once('actions/navbar.php') ?>
-
-  <!-- Page code goes here -->
-
-
-
-
-
-
-
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>

@@ -118,7 +118,7 @@
           <div class=\"col-lg-2\">
           ";
                 //comment
-
+                
           echo "
           </div>
           <div class=\"col-lg-2\">
@@ -141,9 +141,24 @@
 
       }
       else {
-        echo "<div class=\"navbar-padding\"></div>";
-        echo "<div class=\"navbar-padding\"></div>";
-        echo "No Results";
+        echo "
+        <section id=\"bookings\">
+          <div class=\"container\">
+            <div class=\"row register\">
+              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+                <h2><strong>You currently have no bookings.</strong></h2>
+                <hr class=\"small\"></hr>
+              </div>
+            </div>
+            <div class=\"row text-center\">
+              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+                <a href=\"search.php\">Look for bookings now</a>
+              </div>
+            </div>
+            <br>
+          </div>
+        </section>
+        ";
       }
 
 

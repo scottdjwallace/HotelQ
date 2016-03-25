@@ -2,20 +2,9 @@
 
 ##To Do
 
-####My Bookings Page (bookings.php)
-* comment and rate booking
-* cancel a booking
-* if none then link to booking page
-
-####My Properties Page (properties.php)
-* list all their properties
-* delete Property / update property
-* approve / decline Bookings
-* reply to comments
 
 ####List New Property Page (list_property.php)
-* list_property form
-* form page to fill out
+* list_new_property form
 
 ####Update Property Page (update_property.php)
 * same as settings/register but for a single property
@@ -26,6 +15,17 @@
 * maps (maybe)
 * availability
 * request booking for a time
+
+####My Bookings Page (bookings.php)
+* comment and rate booking
+* cancel a booking
+* property details
+
+####My Properties Page (properties.php)
+* list all their properties
+* delete Property / update property
+* approve / decline Bookings
+* reply to comments
 
 ####Admin Page (admin.php)
 * just links to other 2 admin pages
@@ -62,3 +62,4 @@
 * fix spacing on all pages
 * fix deleting all user info (properties error)
 * Move admin to a back end system
+* switch how dropdowns values are gotten, switch value to the value we want in the db
