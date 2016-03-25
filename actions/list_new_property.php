@@ -1,4 +1,9 @@
 <?php
+  //Create a user session or resume an existing one
+ session_start();
+?>
+
+<?php
   include_once 'conn.php';
 
   $id = array("10000007","10000008","10000009","10000010","10000011","10000012","10000013","10000014","10000015","10000016","10000017","10000018","10000019","10000020","10000021","10000022","10000023","10000024","10000025","10000026","10000027","10000028","10000029");
@@ -9,116 +14,52 @@
   $stmt->execute();
   $result = $stmt->get_result();
   $num = $result->num_rows;;
+
   $property_id = $id[$num - 6]; // because started with 6 members
-
   $price = $_POST['price'];
-  $address = $_POST['']
+  $address = $_POST['address'];
+  $city = $_POST['city'];
+  $state = $_POST['state'];
+  $area_code = $_POST['area_code'];
+  $district_id = $_POST['district'];
 
-  //$faculties = array('artsci','eng','phe','comp','bus','nurs','edu','kin','heal','pol',);
-  $faculty = $_POST['faculty'];
-  $fac_id = "301";
-  if ($faculty=="artsci") {
-    $fac_id = "301";
+  $typeSelected = $_POST['type'];
+  $type = "1 Bedroom Apt";
+  if ($typeSelected=="oneBed"){
+    $type = "1 Bedroom Apt";
   }
-  elseif ($faculty=="eng") {
-    $fac_id = "302";
+  elseif ($typeSelected=="twoBed"){
+    $type = "2 Bedroom Apt";
   }
-  elseif ($faculty=="phe") {
-    $fac_id = "303";
+  elseif ($typeSelected=="threeBed"){
+    $type = "3 Bedroom Apt";
   }
-  elseif ($faculty=="comp") {
-    $fac_id = "304";
+  elseif ($typeSelected=="fourBed"){
+    $type = "4 Bedroom Apt";
   }
-  elseif ($faculty=="bus") {
-    $fac_id = "305";
-  }
-  elseif ($faculty=="nurs") {
-    $fac_id = "306";
-  }
-  elseif ($faculty=="edu") {
-    $fac_id = "307";
-  }
-  elseif ($faculty=="kin") {
-    $fac_id = "308";
-  }
-  elseif ($faculty=="heal") {
-    $fac_id = "309";
-  }
-  elseif ($faculty=="pol") {
-    $fac_id = "310";
+  elseif ($typeSelected=="studio"){
+    $type = "Studio";
   }
 
-  // degree -> id
-  $degree = $_POST['degree'];
-  $deg_id = "201";
-  if ($degree=="bsc") {
-    $deg_id = "201";
-  }
-  elseif ($degree=="bfa") {
-    $deg_id = "202";
-  }
-  elseif ($degree=="beng") {
-    $deg_id = "203";
-  }
-  elseif ($degree=="bphe") {
-    $deg_id = "204";
-  }
-  elseif ($degree=="ba") {
-    $deg_id = "205";
-  }
-  elseif ($degree=="bcmp") {
-    $deg_id = "206";
-  }
-  elseif ($degree=="bcomm") {
-    $deg_id = "207";
-  }
-  elseif ($degree=="bscn") {
-    $deg_id = "208";
-  }
-  elseif ($degree=="bed") {
-    $deg_id = "209";
-  }
-  elseif ($degree=="msc") {
-    $deg_id = "210";
-  }
-  elseif ($degree=="meng") {
-    $deg_id = "211";
-  }
-  elseif ($degree=="phd") {
-    $deg_id = "212";
-  }
-  elseif ($degree=="bkin") {
-    $deg_id = "213";
-  }
-  elseif ($degree=="bmus") {
-    $deg_id = "214";
-  }
-  elseif ($degree=="mba") {
-    $deg_id = "215";
-  }
-  elseif($degree=="ma") {
-    $deg_id = "216";
-  }
-  elseif($degree=="masc") {
-    $deg_id = "217";
-  }
-  elseif($degree=="med") {
-    $deg_id = "218";
-  }
-  elseif($degree=="llm") {
-    $deg_id = "219";
-  }
+
 
   // add it to the database
-	$query = "INSERT INTO member VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  // insert into owns
+	$query = "INSERT INTO property VALUES (?,?,?,?,?,?,?,?)";
   $stmt = $con->prepare($query);
-
-  // problem here
-  $stmt->bind_param('ssssissssssiss', $member_id, $email, $password, $avatar, $balance, $phone_number, $grad_year, $address, $city, $state, $area_code, $is_admin, $fac_id, $deg_id);
-	// Execute the query
+  $stmt->bind_param('ssisssss', $property_id, $type, $price, $address, $city, $state, $area_code, $district_id);
+  // Execute the query
   if($stmt->execute()){
-    header("Location: ../properties.php");
-    die();
+    $query2 = "INSERT INTO owns VALUES (?,?)";
+    $stmt2 = $con->prepare($query2);
+    $stmt2->bind_param('ss',$_SESSION['member_id'],$property_id);
+    if ($stmt2->execute()){
+      header("Location: ../properties.php");
+      die();
+    }
+    else {
+      echo "$stmt2->error";
+    }
   }
   else {
     echo "$stmt->error";

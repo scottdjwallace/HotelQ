@@ -3,9 +3,6 @@
 ##To Do
 
 
-####List New Property Page (list_property.php)
-* list_new_property form
-
 ####Update Property Page (update_property.php)
 * same as settings/register but for a single property
 
