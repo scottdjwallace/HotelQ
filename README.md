@@ -2,20 +2,18 @@
 
 ##To Do
 
+####My Properties Page (properties.php)
+* reply to comments
+
+####View Booking Requests (view_requests.php)
+* approve / decline Bookings
+
 ####Search Page (search.php)
 * searchable by district, type, features, and price.
 * need comments and ratings
 * maps (maybe)
 * availability
 * request booking for a time
-
-####My Properties Page (properties.php)
-* delete Property form
-* update property form
-* reply to comments
-
-####View Booking Requests (view_requests.php)
-* approve / decline Bookings
 
 ####Admin Page (admin.php)
 * just links to other 2 admin pages
@@ -31,6 +29,9 @@
 * booking activity per member
 * booking and ratings per supplier, and
 * booking and ratings per property.
+
+####Bugs
+* list new property doesnt add to owns
 
 ####Cosmetic Improvements
 * Login Page (index.php) - Fix failed login notification (cosmetic), make it go to a new page with the error message
