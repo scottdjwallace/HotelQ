@@ -77,13 +77,13 @@
                   <h4>Status</h4>
                 </div>
                 <div class=\"col-lg-2\">
-                  <h4>Booking Period</h4>
+                  <h4>Bookings</h4>
                 </div>
                 <div class=\"col-lg-2\">
-                  <h4>Comment & Rate</h4>
+                  <h4>Update Property</h4>
                 </div>
                 <div class=\"col-lg-2\">
-                  <h4>Cancel Booking</h4>
+                  <h4>Delete Property</h4>
                 </div>
                 <div class=\"col-lg-1\"></div>
               </div>
