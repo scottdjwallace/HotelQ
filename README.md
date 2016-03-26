@@ -11,13 +11,11 @@
 
 ####My Properties Page (properties.php)
 * delete Property form
+* update property form
 * reply to comments
 
 ####View Booking Requests (view_requests.php)
 * approve / decline Bookings
-
-####Update Property Page (update_property.php)
-* same as settings/register but for a single property
 
 ####Admin Page (admin.php)
 * just links to other 2 admin pages
