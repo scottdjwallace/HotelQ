@@ -2,10 +2,6 @@
 
 ##To Do
 
-####My Bookings Page (bookings.php)
-* comment and rate booking
-* cancel a booking
-
 ####Update Property Page (update_property.php)
 * same as settings/register but for a single property
 
