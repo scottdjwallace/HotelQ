@@ -2,9 +2,6 @@
 
 ##To Do
 
-####Update Property Page (update_property.php)
-* same as settings/register but for a single property
-
 ####Search Page (search.php)
 * searchable by district, type, features, and price.
 * need comments and ratings
@@ -13,10 +10,14 @@
 * request booking for a time
 
 ####My Properties Page (properties.php)
-* list all their properties
-* delete Property / update property
-* approve / decline Bookings
+* delete Property form
 * reply to comments
+
+####View Booking Requests (view_requests.php)
+* approve / decline Bookings
+
+####Update Property Page (update_property.php)
+* same as settings/register but for a single property
 
 ####Admin Page (admin.php)
 * just links to other 2 admin pages

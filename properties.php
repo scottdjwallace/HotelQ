@@ -58,7 +58,7 @@
       $num = $result->num_rows;;
 
 		  if($num>0){
-        // period, status, property details, comment, rate,cancel
+        // type, price, address-city-state-areacode, district, view requests, update, delete
         echo "
         <section id=\"properties\">
           <div class=\"container\">
@@ -69,15 +69,17 @@
               </div>
             </div>
             <div class=\"row text-center\">
-              <div class=\"col-lg-1\"></div>
                 <div class=\"col-lg-2\">
-                  <h4>Property Details</h4>
+                  <h4>Type</h4>
+                </div>
+                <div class=\"col-lg-1\">
+                  <h4>Price</h4>
+                </div>
+                <div class=\"col-lg-3\">
+                  <h4>Address</h4>
                 </div>
                 <div class=\"col-lg-2\">
-                  <h4>Status</h4>
-                </div>
-                <div class=\"col-lg-2\">
-                  <h4>Bookings</h4>
+                  <h4>Booking Requests</h4>
                 </div>
                 <div class=\"col-lg-2\">
                   <h4>Update Property</h4>
@@ -85,7 +87,6 @@
                 <div class=\"col-lg-2\">
                   <h4>Delete Property</h4>
                 </div>
-                <div class=\"col-lg-1\"></div>
               </div>
             <br>
         ";
@@ -93,49 +94,57 @@
         while($row = $result->fetch_assoc()){
           echo "
           <div class=\"row text-center\">
-            <div class=\"col-lg-1\"></div>
             <div class=\"col-lg-2\">
           ";
-                // Property details
-                echo $row['booking_id'];
-
+                // type
+                echo $row['type'];
           echo "
           </div>
-          <div class=\"col-lg-2\">
+          <div class=\"col-lg-1\">
           ";
                 // status
-                echo $row['status'];
-
+                echo $row['price'];
+          echo "
+          </div>
+          <div class=\"col-lg-3\">
+          ";
+                //address
+                echo $row['address'] . ", " . $row['city'] . ", " . $row['state'] . ", " . $row['area_code'];
           echo "
           </div>
           <div class=\"col-lg-2\">
           ";
-                //period
-                echo $row['period'];
-
+                echo "<a href=\"view_requests.php?property_id=";
+                echo $row['property_id'];
+                echo "\">View Requests</a>";
           echo "
           </div>
           <div class=\"col-lg-2\">
           ";
-                //comment
-
+                //update
+                echo "<a href=\"update_property.php?property_id=";
+                echo $row['property_id'];
+                echo "\">Update</a>";
           echo "
           </div>
           <div class=\"col-lg-2\">
           ";
-                //cancel
-                echo "<button type=\"button\" action=\"actions/cancel_booking.php\" class=\"btn btn-danger\">Cancel</button>";
-
+                echo "<a href=\"actions/delete_property.php?property_id=";
+                echo $row['property_id'];
+                echo "\">Delete</a>";
           echo "
           </div>
-          <div class=\"col-lg-1\"></div>
           </div>
           <hr>
           ";
         }
 
         echo "
-        <a  href=\"list_property.php\" ><button type=\"button\" class=\"btn btn-primary btn-lg\">List Another Property</button></a>
+        <div class=\"row register\">
+          <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+            <a  href=\"list_property.php\" ><button type=\"button\" class=\"btn btn-primary btn-lg\">List Another Property</button></a>
+          </div>
+        </div>
         </div>
         </section>
         ";
