@@ -3,9 +3,8 @@
 ##To Do
 
 ####Search Page (search.php)
-* searchable by district, type, features, and price.
+* search form, results script
 * need comments and ratings
-* maps (maybe)
 * availability
 * request booking for a time
 
@@ -43,3 +42,4 @@
 * sql injection testing
 * switch from requests per property to all requests page
 * make sure it always returns to previous page, even if request page or comments
+* search by availability and by rating

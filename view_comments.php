@@ -132,13 +132,8 @@
           <div class=\"container\">
             <div class=\"row register\">
               <div class=\"col-lg-10 col-lg-offset-1 text-center\">
-                <h2><strong>You currently have no properties listed.</strong></h2>
+                <h2><strong>You currently have no comments.</strong></h2>
                 <hr class=\"small\"></hr>
-              </div>
-            </div>
-            <div class=\"row text-center\">
-              <div class=\"col-lg-10 col-lg-offset-1 text-center\">
-                <a href=\"list_property.php\">List a property now</a>
               </div>
             </div>
             <br>

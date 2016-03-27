@@ -37,31 +37,176 @@
    session_start();
   ?>
 
-  <?php
-    if(isset($_SESSION['member_id'])){
-      // include database connection
-      // include_once 'config/connection.php';
+    <?php include_once('actions/navbar.php') ?>
+    <div class="navbar-padding"></div>
+    <div class="navbar-padding"></div>
 
-      // QUERY IF PREMIUM
-      // QUERY IF ADMIN
+    <?php
 
-    } else {
-      //User is not logged in. Redirect the browser to the login index.php page and kill this page.
-      header("Location: index.php");
-      die();
-    }
-  ?>
+      if(isset($_POST['searchBtn']) && isset($_SESSION['member_id'])){
+        include_once 'actions/conn.php';
 
-  <?php include_once('actions/navbar.php') ?>
-
-  <!-- Page code goes here -->
+        // get search parameters
 
 
+        $query = "SELECT * FROM property";
+        $stmt = $con->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        echo $row['property_id'];
+        header("Location: search.php#results");
+      }
+      elseif(isset($_SESSION['member_id'])){
+        // show all properties
+        include_once 'actions/conn.php';
+        $query = "SELECT * FROM property";
+        $stmt = $con->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+      } else {
+        //User is not logged in. Redirect the browser to the login index.php page and kill this page.
+        header("Location: index.php");
+        die();
+      }
+    ?>
 
+    <!-- search form -->
+    <section id="search_form">
+      <div class="container">
+        <div class="row register">
+          <div class="col-lg-10 col-lg-offset-1 text-center">
+            <h2><strong>Search for Properties</strong></h2>
+            <hr class="small"></hr>
+          </div>
+        </div>
+        <form name='search' id='search' action='search.php' method='post'>
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+              <!-- searchable by district, type, features, and price. -->
+              <div class="form-group">
+                Select a Type: &nbsp; &nbsp;
+                <select name="type">
+                  <option value="any">Any</option>
+                  <option value="oneBed">1 Bedroom Apt</option>
+                  <option value="twoBed">2 Bedroom Apt</option>
+                  <option value="threeBed">3 Bedroom Apt</option>
+                  <option value="fourBed">4 Bedroom Apt</option>
+                  <option value="studio">Studio</option>
+                </select>
+                &nbsp; &nbsp; &nbsp; &nbsp; District: &nbsp; &nbsp;
+                <select name="district">
+                  <option value="any">Any</option>
+                  <option value="001">Fremont</option>
+                  <option value="002">Wallingford</option>
+                  <option value="003">Ballard</option>
+                  <option value="004">Queen Anne</option>
+                  <option value="005">Lower Queen Anne</option>
+                  <option value="006">Westlake</option>
+                  <option value="007">South Lake Union</option>
+                  <option value="008">Capitol Hill</option>
+                  <option value="009">Pike Place Market</option>
+                  <option value="010">Downtown</option>
+                  <option value="011">Pioneer Square</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-2 text-center">
+              <div class="form-group">
+                  <input type="int" maxlength="10" required class="form-control" name="price_min" placeholder="Price Min.">
+              </div>
+            </div>
+            <div class="col-lg-2 text-center">
+              <div class="form-group">
+                  <input type="int" maxlength="10" required class="form-control" name="price_max" placeholder="Price Max">
+              </div>
+            </div>
+            <div class="col-lg-4"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]" value="">Shared Bathroom</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Private Bathroom</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Close to Subway</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Pool</label>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Full Kitchen</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Laundry</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Smoke Free</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox"  name="check_list[]" value="">Scent Free</label>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Balcony</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Gym</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Office</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Dishwasher</label>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Internet</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="checkbox" name="check_list[]"  value="">Jacuzzi</label>
+              </div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="form-group">
+                  <input class="btn btn-primary btn-lg" type='submit' id='searchBtn' name='searchBtn' value='Search' />
+                </div>
+            <hr>
+          </div>
+        </div>
+        </form>
+      </div>
+    </section>
 
-
-
-
+    <!-- display results -->
+    <section id="results">
+      <div class="container">
+        <div class="row register">
+          <div class="col-lg-10 col-lg-offset-1 text-center">
+            <h2><strong>Properties</strong></h2>
+            <hr class="small"></hr>
+          </div>
+        </div>
+        <!-- php script to echo results of $row, which changes based on if the button was pressed -->
+      </div>
+    </section>
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
