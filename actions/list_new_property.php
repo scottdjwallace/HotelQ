@@ -58,7 +58,7 @@
       die();
     }
     else {
-      echo "$stmt2->error";
+      echo $stmt2->error;
     }
   }
   else {

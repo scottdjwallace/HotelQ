@@ -67,10 +67,14 @@
         $stmt = $con->prepare($query);
         $stmt->bind_param('ss',$comment_id,$reply_id);
         if($stmt->execute()){
-          header("Location: properties.php");
+          header("Location: view_comments.php?property_id=$property_id");
           die();
         }
         else {
+          echo "<br>";
+          echo "<br>";
+          echo "<br>";
+          echo $comment_id, $reply_id;
           echo $stmt->error;
         }
       }
@@ -84,6 +88,7 @@
   <?php
     if(isset($_SESSION['member_id'])){
       $property_id = $_GET['property_id'];
+      $comment_id = $_GET['comment_id'];
     } else {
       //User is not logged in. Redirect the browser to the login index.php page and kill this page.
       header("Location: index.php");
