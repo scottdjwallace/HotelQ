@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HotelQ - My Properties</title>
+    <title>HotelQ - View Comments</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,54 +42,45 @@
   <div class="navbar-padding"></div>
   <div class="navbar-padding"></div>
 
+
   <?php
     if(isset($_SESSION['member_id'])){
 
       include_once('actions/conn.php');
+      $property_id = $_GET['property_id'];
 
       // SELECT query
-      $query = "SELECT * FROM owns NATURAL JOIN property WHERE member_id=?";
+      $query = "SELECT * FROM comment WHERE property_id=? AND member_id!=?";
       $stmt = $con->prepare($query);
-      $stmt->bind_Param("s", $_SESSION['member_id']);
+      $stmt->bind_Param("ss", $property_id, $_SESSION['member_id']);
       $stmt->execute();
       $result = $stmt->get_result();
       //$myrow = $result->fetch_assoc();
 
       $num = $result->num_rows;;
 
-		  if($num>0){
-        // type, price, address-city-state-areacode, district, view requests, update, delete
+      if($num>0){
         echo "
         <section id=\"properties\">
           <div class=\"container\">
             <div class=\"row register\">
               <div class=\"col-lg-10 col-lg-offset-1 text-center\">
-                <h2><strong>My Properties</strong></h2>
+                <h2><strong>Comments</strong></h2>
                 <hr class=\"small\"></hr>
               </div>
             </div>
             <div class=\"row text-center\">
-                <div class=\"col-lg-1\">
-                  <h4>Type</h4>
-                </div>
-                <div class=\"col-lg-1\">
-                  <h4>Price</h4>
+                <div class=\"col-lg-1\"></div>
+                <div class=\"col-lg-6\">
+                  <h4>Comment</h4>
                 </div>
                 <div class=\"col-lg-2\">
-                  <h4>Address</h4>
+                  <h4>Rating</h4>
                 </div>
                 <div class=\"col-lg-2\">
-                  <h4>Comments</h4>
+                  <h4>Reply</h4>
                 </div>
-                <div class=\"col-lg-2\">
-                  <h4>Booking Requests</h4>
-                </div>
-                <div class=\"col-lg-2\">
-                  <h4>Update Property</h4>
-                </div>
-                <div class=\"col-lg-2\">
-                  <h4>Delete Property</h4>
-                </div>
+                <div class=\"col-lg-1\"></div>
               </div>
             <br>
         ";
@@ -97,64 +88,39 @@
         while($row = $result->fetch_assoc()){
           echo "
           <div class=\"row text-center\">
-            <div class=\"col-lg-1\">
+          <div class=\"col-lg-1\"></div>
+            <div class=\"col-lg-6\">
           ";
                 // type
-                echo $row['type'];
+                echo $row['comment_text'];
           echo "
           </div>
-          <div class=\"col-lg-1\">
+          <div class=\"col-lg-2\">
           ";
                 // status
-                echo $row['price'];
+                echo $row['rating'];
           echo "
           </div>
           <div class=\"col-lg-2\">
           ";
                 //address
-                echo $row['address'] . ", " . $row['city'] . ", " . $row['state'] . ", " . $row['area_code'];
+                echo "<a href=\"reply.php?comment_id=";
+                echo $row['comment_id'];
+                echo "&property_id=";
+                echo $property_id;
+                echo "\">Reply</a>";
           echo "
           </div>
-          <div class=\"col-lg-2\">
+          <div class=\"col-lg-1\"></div>
           ";
-                echo "<a href=\"view_comments.php?property_id=";
-                echo $row['property_id'];
-                echo "\">View Comments</a>";
+
           echo "
-          </div>
-          <div class=\"col-lg-2\">
-          ";
-                echo "<a href=\"view_requests.php?property_id=";
-                echo $row['property_id'];
-                echo "\">View Requests</a>";
-          echo "
-          </div>
-          <div class=\"col-lg-2\">
-          ";
-                //update
-                echo "<a href=\"update_property.php?property_id=";
-                echo $row['property_id'];
-                echo "\">Update</a>";
-          echo "
-          </div>
-          <div class=\"col-lg-2\">
-          ";
-                echo "<a href=\"actions/delete_property.php?property_id=";
-                echo $row['property_id'];
-                echo "\">Delete</a>";
-          echo "
-          </div>
           </div>
           <hr>
           ";
         }
 
         echo "
-        <div class=\"row register\">
-          <div class=\"col-lg-10 col-lg-offset-1 text-center\">
-            <a  href=\"list_property.php\" ><button type=\"button\" class=\"btn btn-primary btn-lg\">List Another Property</button></a>
-          </div>
-        </div>
         </div>
         </section>
         ";
@@ -188,6 +154,9 @@
       die();
     }
   ?>
+
+
+
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>

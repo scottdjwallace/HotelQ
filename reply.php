@@ -42,34 +42,47 @@
     if(isset($_POST['commentBtn']) && isset($_SESSION['member_id'])){
      // include database connection
       include_once 'actions/conn.php';
-      $booking_id = $_GET['booking_id'];
+      $comment_id = $_GET['comment_id'];
       $property_id = $_GET['property_id'];
 
       $comment_text = $_POST['comment_text'];
-      $rating = $_POST['rating'];
 
-      $id = array("20000008","20000009","20000010","20000011","20000012","20000013","20000014");
+      $id = array("30000008","30000009","30000010","30000011","30000012","30000013","30000014");
 
       // generate member_id
-      $query = "SELECT * FROM comment";
+      $query = "SELECT * FROM reply";
       $stmt = $con->prepare($query);
       $stmt->execute();
       $result = $stmt->get_result();
       $num = $result->num_rows;;
-      $comment_id = $id[$num - 5];
+      $reply_id = $id[$num - 2];
 
-      $query = "INSERT INTO comment VALUES (?,?,?,?,?)";
+      // and reply
+      $query = "INSERT INTO comment VALUES (?,?,?,?,NULL)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param('sssss', $_SESSION['member_id'],$property_id,$comment_text,$comment_id,$rating);
-      $stmt->execute();
-      header("Location: bookings.php");
-      die();
+      $stmt->bind_param('ssss', $_SESSION['member_id'],$property_id,$comment_text,$reply_id);
+
+      if($stmt->execute()){
+        $query = "INSERT INTO reply VALUES (?,?)";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param('ss',$comment_id,$reply_id);
+        if($stmt->execute()){
+          header("Location: properties.php");
+          die();
+        }
+        else {
+          echo $stmt->error;
+        }
+      }
+      else {
+        echo $stmt->error;
+      }
+
     }
   ?>
 
   <?php
     if(isset($_SESSION['member_id'])){
-      $booking_id = $_GET['booking_id'];
       $property_id = $_GET['property_id'];
     } else {
       //User is not logged in. Redirect the browser to the login index.php page and kill this page.
@@ -89,27 +102,15 @@
     <div class="container">
       <div class="row register">
         <div class="col-lg-10 col-lg-offset-1 text-center">
-          <h2><strong>Comment on Property</strong></h2>
+          <h2><strong>Reply to Comment</strong></h2>
           <hr class="small">
         </div>
       </div>
       <div class="row">
         <div class="col-lg-4 col-lg-offset-4 text-center">
-          <form name='comment' id='comment' action='comment_booking.php?booking_id=<?php echo $booking_id;?>&property_id=<?php echo $property_id;?>' method='post'>
+          <form name='comment' id='comment' action='reply.php?comment_id=<?php echo $comment_id;?>&property_id=<?php echo $property_id;?>' method='post'>
             <div class="form-group">
-                <input type="text" maxlength="140" required class="form-control" name="comment_text" placeholder="Comment">
-            </div>
-
-            <div class="form-group">
-
-              Rating: &nbsp;
-              <select name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+                <input type="text" maxlength="140" required class="form-control" name="comment_text" placeholder="Reply">
             </div>
 
               <div class="form-group">

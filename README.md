@@ -2,9 +2,6 @@
 
 ##To Do
 
-####My Properties Page (properties.php)
-* reply to comments
-
 ####View Booking Requests (view_requests.php)
 * approve / decline Bookings
 
@@ -32,6 +29,7 @@
 
 ####Bugs
 * list new property doesnt add to owns
+* reply doesnt get inserted
 
 ####Cosmetic Improvements
 * Login Page (index.php) - Fix failed login notification (cosmetic), make it go to a new page with the error message
