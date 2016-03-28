@@ -4,6 +4,9 @@
 
 ####Search Page (search.php)
 * search form, results script
+
+####view_property.php
+* use get to get a property id and go form there
 * need comments and ratings
 * availability
 * request booking for a time

@@ -49,14 +49,50 @@
         $district_id = $_POST['district'];
         $price_min =  $_POST['price_min'];
         $price_max = $_POST['price_max'];
-        // get checkbox
+        // get checkboxes
+        $shared = $_POST['shared'];
+        $private = $_POST['private'];
+        $close_to_subway = $_POST['close'];
+        $pool = $_POST['pool'];
+        $full_kitchen = $_POST['full'];
+        $laundry = $_POST['laundry'];
+        $smoke_free = $_POST['smoke'];
+        $scent_free = $_POST['scent'];
+        $balcony = $_POST['balcony'];
+        $gym = $_POST['gym'];
+        $office = $_POST['office'];
+        $dishwasher = $_POST['dishwasher'];
+        $internet = $_POST['internet'];
+        $jacuzzi = $_POST['jacuzzi'];
+        $checkboxes = array();
+        if ($shared!=""){ array_push($checkboxes, $shared); }
+        if ($private!=""){ array_push($checkboxes, $private); }
+        if ($close_to_subway!=""){ array_push($checkboxes, $close_to_subway); }
+        if ($pool!=""){ array_push($checkboxes, $pool); }
+        if ($full_kitchen!=""){ array_push($checkboxes, $full_kitchen); }
+        if ($laundry!=""){ array_push($checkboxes, $laundry); }
+        if ($smoke_free!=""){ array_push($checkboxes, $smoke_free); }
+        if ($scent_free!=""){ array_push($checkboxes, $scent_free); }
+        if ($balcony!=""){ array_push($checkboxes, $balcony); }
+        if ($gym!=""){ array_push($checkboxes, $gym); }
+        if ($office!=""){ array_push($checkboxes, $office); }
+        if ($dishwasher!=""){ array_push($checkboxes, $dishwasher); }
+        if ($internet!=""){ array_push($checkboxes, $internet); }
+        if ($jacuzzi!=""){ array_push($checkboxes, $jacuzzi); }
+        if (count($checkboxes)>0){
+          // construct the features string in query
+          foreach ($checkboxes as $i) {
+            echo $i;
+          }
+        }
+
+        // query = filter on type, district, features, price min and price max
 
         $query = "SELECT * FROM property";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        //header("Location: search.php#results");
       }
       elseif(isset($_SESSION['member_id'])){
         // show all properties
@@ -133,52 +169,52 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-2">
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]" value="">Shared Bathroom</label>
+                <label><input type="hidden" name="shared" id="shared" value=""><input type="checkbox" name="shared" id="shared" value="Shared Bathroom">Shared Bathroom</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Private Bathroom</label>
+                <label><input type="hidden" name="private" id="private" value=""><input type="checkbox" name="private" id="private" value="Private Bathroom">Private Bathroom</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Close to Subway</label>
+                <label><input type="hidden" name="close" id="close" value=""><input type="checkbox" name="close" id="close" value="Close to Subway">Close to Subway</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Pool</label>
-              </div>
-            </div>
-            <div class="col-lg-2">
-              <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Full Kitchen</label>
-              </div>
-              <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Laundry</label>
-              </div>
-              <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Smoke Free</label>
-              </div>
-              <div class="form-group checkbox">
-                <label><input type="checkbox"  name="check_list[]" value="">Scent Free</label>
+                <label><input type="hidden" name="pool" id="pool" value=""><input type="checkbox" name="pool" id="pool" value="Pool">Pool</label>
               </div>
             </div>
             <div class="col-lg-2">
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Balcony</label>
+                <label><input type="hidden" name="full" id="full" value=""><input type="checkbox" name="full" id="full" value="Full Kitchen">Full Kitchen</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Gym</label>
+                <label><input type="hidden" name="laundry" id="laundry" value=""><input type="checkbox" name="laundry" id="laundry" value="Laundry">Laundry</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Office</label>
+                <label><input type="hidden" name="smoke" id="smoke" value=""><input type="checkbox" name="smoke" id="smoke" value="Smoke Free">Smoke Free</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Dishwasher</label>
+                <label><input type="hidden" name="scent" id="scent" value=""><input type="checkbox"  name="scent" id="scent" value="Scent Free">Scent Free</label>
               </div>
             </div>
             <div class="col-lg-2">
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Internet</label>
+                <label><input type="hidden" name="balcony" id="balcony" value=""><input type="checkbox" name="balcony" id="balcony" value="Balcony">Balcony</label>
               </div>
               <div class="form-group checkbox">
-                <label><input type="checkbox" name="check_list[]"  value="">Jacuzzi</label>
+                <label><input type="hidden" name="gym" id="gym" value=""><input type="checkbox" name="gym" id="gym" value="Gym">Gym</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="hidden" name="office" id="office" value=""><input type="checkbox" name="office" id="office" value="Office">Office</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="hidden" name="dishwasher" id="dishwasher" value=""><input type="checkbox" name="dishwasher" id="dishwasher" value="Dishwasher">Dishwasher</label>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="form-group checkbox">
+                <label><input type="hidden" name="internet" id="internet" value=""><input type="checkbox" name="internet" id="internet" value="Internet">Internet</label>
+              </div>
+              <div class="form-group checkbox">
+                <label><input type="hidden" name="jacuzzi" id="jacuzzi" value=""><input type="checkbox" name="jacuzzi" id="jacuzzi" value="Jacuzzi">Jacuzzi</label>
               </div>
             </div>
             <div class="col-lg-2"></div>
