@@ -45,17 +45,18 @@
 
       if(isset($_POST['searchBtn']) && isset($_SESSION['member_id'])){
         include_once 'actions/conn.php';
-
-        // get search parameters
-
+        $type = $_POST['type'];
+        $district_id = $_POST['district'];
+        $price_min =  $_POST['price_min'];
+        $price_max = $_POST['price_max'];
+        // get checkbox
 
         $query = "SELECT * FROM property";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        echo $row['property_id'];
-        header("Location: search.php#results");
+        //header("Location: search.php#results");
       }
       elseif(isset($_SESSION['member_id'])){
         // show all properties
@@ -88,11 +89,11 @@
                 Select a Type: &nbsp; &nbsp;
                 <select name="type">
                   <option value="any">Any</option>
-                  <option value="oneBed">1 Bedroom Apt</option>
-                  <option value="twoBed">2 Bedroom Apt</option>
-                  <option value="threeBed">3 Bedroom Apt</option>
-                  <option value="fourBed">4 Bedroom Apt</option>
-                  <option value="studio">Studio</option>
+                  <option value="1 Bedroom Apt">1 Bedroom Apt</option>
+                  <option value="2 Bedroom Apt">2 Bedroom Apt</option>
+                  <option value="3 Bedroom Apt">3 Bedroom Apt</option>
+                  <option value="4 Bedroom Apt">4 Bedroom Apt</option>
+                  <option value="Studio">Studio</option>
                 </select>
                 &nbsp; &nbsp; &nbsp; &nbsp; District: &nbsp; &nbsp;
                 <select name="district">
