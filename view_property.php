@@ -53,11 +53,6 @@
       $result = $stmt->get_result();
       $property_row = $result->fetch_assoc();
 
-      // features
-      // comments and ratings
-      // availability
-      // make booking now
-
     } else {
       //User is not logged in. Redirect the browser to the login index.php page and kill this page.
       header("Location: index.php");
@@ -196,13 +191,13 @@
         </div>
       </div>
 
-      <!-- availability book now, buttont to form -->
+      <!-- availability book now, button to form -->
       <div class="row">
       <form name='submit' id='submit' action='actions/submit_booking.php?property_id=<?php echo $property_row['property_id']; ?>' method='post'>
         <div class="col-lg-4 col-lg-offset-4 text-center">
           <div class="form-group">
             Availability: &nbsp;
-            <select name="rating">
+            <select name="availability">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
