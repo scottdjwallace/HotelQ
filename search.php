@@ -79,25 +79,62 @@
         if ($dishwasher!=""){ array_push($checkboxes, $dishwasher); }
         if ($internet!=""){ array_push($checkboxes, $internet); }
         if ($jacuzzi!=""){ array_push($checkboxes, $jacuzzi); }
+
+        $cond = array();
+        if ($type!="any"){
+          $query1 = "type=\"" . $type . "\"";
+          array_push($cond, $query1);
+        }
+        if ($district_id!="any"){
+          $query1 = "district_id=\"" . $district_id . "\"";
+          array_push($cond, $query1);
+        }
+        if ($price_min!=""){
+          $query1 = $price_min . "< price";
+          array_push($cond, $query1);
+        }
+        if ($price_max!=""){
+          $query1 = $price_max . "> price";
+          array_push($cond, $query1);
+        }
+
+        $query = "SELECT * FROM property NATURAL JOIN district";
+
+        // subquery for all the checkboxes
         if (count($checkboxes)>0){
-          // construct the features string in query
-          foreach ($checkboxes as $i) {
-            echo $i;
+          $subquery = "SELECT property_id FROM has_feature NATURAL JOIN feature WHERE feature_name=\"" . $checkboxes[0] . "\"";
+          for ($x = 1; $x < count($checkboxes); $x++) {
+              $subquery .= " AND property_id in (";
+              $subquery .= "SELECT property_id FROM has_feature NATURAL JOIN feature WHERE feature_name=\"" . $checkboxes[$x] . "\"";
+          }
+          for ($x = 0; $x < count($checkboxes) - 1; $x++) {
+              $subquery .= ")";
+          }
+          $query .= " WHERE ";
+          for ($x = 0; $x < count($cond); $x++) {
+              $query .= $cond[$x]. " AND ";
+          }
+          $query .= "property_id in (" .  $subquery . ")";
+        }
+        else {
+          if (count($cond)>0) {
+            $query .= " WHERE ";
+            for ($x = 0; $x < count($cond) - 1; $x++) {
+                $query .= $cond[$x] . " AND ";
+            }
+            $query .= $cond[count($cond)-1];
           }
         }
 
-        // query = filter on type, district, features, price min and price max
-
-        $query = "SELECT * FROM property";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+
       }
       elseif(isset($_SESSION['member_id'])){
         // show all properties
         include_once 'actions/conn.php';
-        $query = "SELECT * FROM property";
+        $query = "SELECT * FROM property NATURAL JOIN district";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -233,17 +270,100 @@
     </section>
 
     <!-- display results -->
-    <section id="results">
-      <div class="container">
-        <div class="row register">
-          <div class="col-lg-10 col-lg-offset-1 text-center">
-            <h2><strong>Properties</strong></h2>
-            <hr class="small"></hr>
+    <?php
+    echo "
+    <section id=\"results\">
+      <div class=\"container\">
+        <div class=\"row register\">
+          <div class=\"col-lg-10 col-lg-offset-1 text-center\">
+            <h2><strong>" . $result->num_rows . " Properties Available</strong></h2>
+            <hr class=\"small\"></hr>
           </div>
         </div>
-        <!-- php script to echo results of $row, which changes based on if the button was pressed -->
+        <div class=\"row text-center\">
+            <div class=\"col-lg-2\">
+              <h4>View Property</h4>
+            </div>
+            <div class=\"col-lg-2\">
+              <h4>Address</h4>
+            </div>
+            <div class=\"col-lg-2\">
+              <h4>District</h4>
+            </div>
+            <div class=\"col-lg-2\">
+              <h4>Type</h4>
+            </div>
+            <div class=\"col-lg-3\">
+              <h4>Features</h4>
+            </div>
+            <div class=\"col-lg-1\">
+              <h4>Price</h4>
+            </div>
+        </div>
+        <br>
+    ";
+
+
+    while($row = $result->fetch_assoc()){
+      echo "
+      <div class=\"row text-center\">
+        <div class=\"col-lg-2\">
+      ";
+            // view
+            echo "<a href=\"view_property.php?property_id=";
+            echo $row['property_id'];
+            echo "\">View</a>";
+      echo "
       </div>
-    </section>
+      <div class=\"col-lg-2\">
+      ";
+            //address
+            echo $row['address'] . ", " . $row['city'] . ", " . $row['state'] . ", " . $row['area_code'];
+      echo "
+      </div>
+      <div class=\"col-lg-2\">
+      ";
+          // district
+          echo $row['district_name'];
+
+      echo "
+      </div>
+      <div class=\"col-lg-2\">
+      ";
+            echo $row['type'];
+      echo "
+      </div>
+      <div class=\"col-lg-3\">
+      ";
+      //features
+      include_once('actions/conn.php');
+      $query = "SELECT * FROM has_feature NATURAL JOIN feature WHERE property_id=?";
+      $stmt = $con->prepare($query);
+      $stmt->bind_Param("s", $row['property_id']);
+      $stmt->execute();
+      $result2 = $stmt->get_result();
+      $str = "";
+      while($r = $result2->fetch_assoc()){
+        $str .= $r['feature_name'] . ", ";
+      }
+      echo $str;
+      echo "
+      </div>
+      <div class=\"col-lg-1\">
+      ";
+            echo $row['price'];
+      echo "
+      </div>
+      </div>
+      <hr>
+      ";
+    }
+
+    echo "
+      </div>
+      </section>
+    ";
+?>
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>

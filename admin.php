@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HotelQ - Search</title>
+    <title>HotelQ - Admin Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,9 +48,64 @@
     }
   ?>
 
-  <?php include_once('actions/navbar.php') ?>
+  <?php include_once('actions/admin_navbar.php') ?>
 
   <!-- Page code goes here -->
+  <div class="navbar-padding"></div>
+
+  <!-- Services -->
+  <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+  <section id="services" class="bg-primary">
+      <div class="container">
+          <div class="row text-center">
+              <div class="col-lg-10 col-lg-offset-1">
+                  <div class="navbar-padding"></div>
+                  <div class="navbar-padding"></div>
+                  <div class="navbar-padding"></div>
+                  <h1>Manage HotelQ</h1>
+                  <hr class="small">
+                  <div class="row">
+                      <div class="col-md-3 col-sm-6">
+                      </div>
+                      <div class="col-md-3 col-sm-6">
+                          <div class="service-item">
+                              <span class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-file-text-o fa-stack-1x text-primary"></i>
+                          </span>
+                              <h4>
+                                  <strong>Service Summaries</strong>
+                              </h4>
+                              <p>Summaries of bookings based on ratings per accommodation, ratings per supplier and booking activity per consumer.</p>
+                              <a href="admin_reports.php" class="btn btn-dark">Get Reports</a>
+                          </div>
+                      </div>
+                      <div class="col-md-3 col-sm-6">
+                          <div class="service-item">
+                              <span class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-users fa-stack-1x text-primary"></i>
+                          </span>
+                              <h4>
+                                  <strong>Manage Users & Properties</strong>
+                              </h4>
+                              <p>Manage or delete members and all their accommodations and manage or delete individual accommodations.</p>
+                              <a href="admin_manage.php" class="btn btn-dark">Manage</a>
+                          </div>
+                      </div>
+                      <div class="col-md-3 col-sm-6">
+                      </div>
+                  </div>
+                  <!-- /.row (nested) -->
+
+              </div>
+              <!-- /.col-lg-10 -->
+          </div>
+          <div class="bottom-home-padding"></div>
+          <div class="navbar-padding"></div>
+          <!-- /.row -->
+        </div>
+      </section>
 
 
 

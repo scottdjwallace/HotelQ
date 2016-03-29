@@ -55,7 +55,7 @@
       $result = $stmt->get_result();
       //$myrow = $result->fetch_assoc();
 
-      $num = $result->num_rows;;
+      $num = $result->num_rows;
 
 		  if($num>0){
         // type, price, address-city-state-areacode, district, view requests, update, delete

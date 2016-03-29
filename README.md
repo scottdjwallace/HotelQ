@@ -2,18 +2,11 @@
 
 ##To Do
 
-####Search Page (search.php)
-* search form, results script
-
 ####view_property.php
 * use get to get a property id and go form there
 * need comments and ratings
 * availability
 * request booking for a time
-
-####Admin Page (admin.php)
-* just links to other 2 admin pages
-* same design as home page
 
 ####Manage Members & Properties Page (admin_manage.php)
 * list all Members
@@ -33,6 +26,7 @@
 * Home Page (home.php) - move admin to dynamically in same row as the other 4
 * Settings (settings.php) - cancel premium button (extra) & form
 * Bookings (bookings.php) - center text correctly
+* extra comment on features
 
 #### Future Improvements
 * Change password
