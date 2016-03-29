@@ -2,10 +2,6 @@
 
 ##To Do
 
-####view_property.php
-* availability drop down
-* submit_booking form
-
 ####Manage Members & Properties Page (admin_manage.php)
 * list all Members
 * list all accommodations
@@ -42,3 +38,5 @@
 ####Updates
 * Database is modified now, new column in table
 * add features when listing new property
+* points of interest arent used
+* fix if its booked it doesnt get pulled

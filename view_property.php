@@ -198,11 +198,25 @@
           <div class="form-group">
             Availability: &nbsp;
             <select name="availability">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+              <?php
+              $dates = array(" 2016-4-4"," 2016-4-11"," 2016-4-18"," 2016-4-25"," 2016-5-2"," 2016-5-9"," 2016-5-16"," 2016-5-23"," 2016-5-30");
+              $query = "SELECT * FROM booking WHERE property_id=? AND status=\"Booked\"";
+              $stmt = $con->prepare($query);
+              $stmt->bind_Param('s', $property_row['property_id']);
+              $stmt->execute();
+              $result3 = $stmt->get_result();
+              $booked_array = array();
+              while($dr = $result3->fetch_assoc()){
+                array_push($booked_array,$dr['period']);
+              }
+              foreach($dates as $d){
+                if (in_array($d, $booked_array)) {
+                }
+                else {
+                  echo "<option value=\"" . $d . "\">" . $d . "</option>";
+                }
+              }
+              ?>
             </select>
           </div>
           <div class="form-group">
