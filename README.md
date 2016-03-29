@@ -3,10 +3,8 @@
 ##To Do
 
 ####view_property.php
-* use get to get a property id and go form there
-* need comments and ratings
-* availability
-* request booking for a time
+* availability drop down
+* submit_booking form
 
 ####Manage Members & Properties Page (admin_manage.php)
 * list all Members
@@ -40,3 +38,7 @@
 * switch from requests per property to all requests page
 * make sure it always returns to previous page, even if request page or comments
 * search by availability and by rating
+
+####Updates
+* Database is modified now, new column in table
+* add features when listing new property

@@ -45,7 +45,7 @@
 
   // add it to the database
   // insert into owns
-	$query = "INSERT INTO property VALUES (?,?,?,?,?,?,?,?)";
+	$query = "INSERT INTO property VALUES (?,?,?,?,NULL,?,?,?,?)";
   $stmt = $con->prepare($query);
   $stmt->bind_param('ssisssss', $property_id, $type, $price, $address, $city, $state, $area_code, $district_id);
   // Execute the query
