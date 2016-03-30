@@ -2,16 +2,19 @@
 
 ##To Do
 
-####Manage Members & Properties Page (admin_manage.php)
-* list all Members
-* list all accommodations
-* delete things
-
 ####Admin Reports Page (admin_reports.php)
 * summaries based on
 * booking activity per member
 * booking and ratings per supplier, and
 * booking and ratings per property.
+
+####Updates
+* Database is modified now, new column in table
+* add features when listing new property
+* points of interest arent used
+* fix if its booked it doesnt get pulled
+* num of bookings, num of properties in manage users
+* delete properties fix
 
 ####Cosmetic Improvements
 * Login Page (index.php) - Fix failed login notification (cosmetic), make it go to a new page with the error message
@@ -34,9 +37,3 @@
 * switch from requests per property to all requests page
 * make sure it always returns to previous page, even if request page or comments
 * search by availability and by rating
-
-####Updates
-* Database is modified now, new column in table
-* add features when listing new property
-* points of interest arent used
-* fix if its booked it doesnt get pulled
