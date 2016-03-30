@@ -41,7 +41,20 @@
     $type = "Studio";
   }
 
-
+  $shared = $_POST['shared'];
+  $private = $_POST['private'];
+  $close_to_subway = $_POST['close'];
+  $pool = $_POST['pool'];
+  $full_kitchen = $_POST['full'];
+  $laundry = $_POST['laundry'];
+  $smoke_free = $_POST['smoke'];
+  $scent_free = $_POST['scent'];
+  $balcony = $_POST['balcony'];
+  $gym = $_POST['gym'];
+  $office = $_POST['office'];
+  $dishwasher = $_POST['dishwasher'];
+  $internet = $_POST['internet'];
+  $jacuzzi = $_POST['jacuzzi'];
 
   // add it to the database
   // insert into owns
@@ -54,6 +67,90 @@
     $stmt2 = $con->prepare($query2);
     $stmt2->bind_param('ss',$_SESSION['member_id'],$property_id);
     if ($stmt2->execute()){
+      if ($shared!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$shared,$property_id);
+        $stmt3->execute();
+      }
+      if ($private!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$private,$property_id);
+        $stmt3->execute();
+      }
+      if ($close_to_subway!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$close_to_subway,$property_id);
+        $stmt3->execute();
+      }
+      if ($pool!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$pool,$property_id);
+        $stmt3->execute();
+      }
+      if ($full_kitchen!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$full_kitchen,$property_id);
+        $stmt3->execute();
+      }
+      if ($laundry!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$laundry,$property_id);
+        $stmt3->execute();
+      }
+      if ($smoke_free!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$smoke_free,$property_id);
+        $stmt3->execute();
+      }
+      if ($scent_free!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$scent_free,$property_id);
+        $stmt3->execute();
+      }
+      if ($balcony!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$balcony,$property_id);
+        $stmt3->execute();
+      }
+      if ($gym!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$gym,$property_id);
+        $stmt3->execute();
+      }
+      if ($office!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$office,$property_id);
+        $stmt3->execute();
+      }
+      if ($dishwasher!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$dishwasher,$property_id);
+        $stmt3->execute();
+      }
+      if ($internet!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$internet,$property_id);
+        $stmt3->execute();
+      }
+      if ($jacuzzi!=""){
+        $query3 = "INSERT INTO has_feature VALUES (?,?)";
+        $stmt3 = $con->prepare($query3);
+        $stmt3->bind_param('ss',$jacuzzi,$property_id);
+        $stmt3->execute();
+      }
       header("Location: ../properties.php");
       die();
     }

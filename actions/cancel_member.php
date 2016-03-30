@@ -20,16 +20,15 @@
   $stmt->bind_param('s', $_SESSION['member_id']);
   $stmt->execute();
 
-  $query = "DELETE FROM owns WHERE owns.member_id=?";
+  $query = "DELETE FROM property NATURAL JOIN owns WHERE property.member_id=?"; // no member_id
   $stmt = $con->prepare($query);
   $stmt->bind_param('s', $_SESSION['member_id']);
   $stmt->execute();
 
-  /*
-  $query = "DELETE FROM property WHERE property.member_id=?"; // no member_id
+  $query = "DELETE FROM owns WHERE owns.member_id=?";
   $stmt = $con->prepare($query);
   $stmt->bind_param('s', $_SESSION['member_id']);
-  $stmt->execute(); */
+  $stmt->execute();
 
   $query = "DELETE FROM member WHERE member.member_id=?";
   $stmt = $con->prepare($query);

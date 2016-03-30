@@ -88,8 +88,6 @@
           // Display an error message and the login form
           echo "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Login Failed!</strong> Please login with the correct credentials.</div>";
          }
-     } else {
-       echo "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Login Failed!</strong> Please login with the correct credentials.</div>";
      }
    }
   ?>

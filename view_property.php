@@ -86,25 +86,28 @@
       <div class="row register">
         <div class="col-lg-10 col-lg-offset-1 text-center">
           <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <h3>District</h3>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <h3>Type</h3>
             </div>
             <div class="col-lg-3">
               <h3>Features</h3>
             </div>
             <div class="col-lg-3">
+              <h3>Point of Interests</h3>
+            </div>
+            <div class="col-lg-2">
               <h3>Price</h3>
             </div>
           </div>
           <br>
           <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <p><?php echo $property_row['district_name']; ?></p>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <p><?php echo $property_row['type']; ?></p>
             </div>
             <div class="col-lg-3">
@@ -124,6 +127,22 @@
               ?></p>
             </div>
             <div class="col-lg-3">
+              <p><?php
+              //features
+              include_once('actions/conn.php');
+              $query = "SELECT * FROM contains NATURAL JOIN point_of_interest WHERE district_id=?";
+              $stmt = $con->prepare($query);
+              $stmt->bind_Param("s", $property_row['district_id']);
+              $stmt->execute();
+              $result2 = $stmt->get_result();
+              $str = "";
+              while($r = $result2->fetch_assoc()){
+                $str .= $r['poi_name'] . ", ";
+              }
+              echo $str;
+              ?></p>
+            </div>
+            <div class="col-lg-2">
               <p><?php echo $property_row['price']; ?></p>
             </div>
           </div>
