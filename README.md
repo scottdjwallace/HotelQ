@@ -14,7 +14,7 @@
 * points of interest arent used
 * fix if its booked it doesnt get pulled
 * num of bookings, num of properties in manage users
-* delete properties fix
+* delete properties fix properly on delete_property.php
 
 ####Cosmetic Improvements
 * Login Page (index.php) - Fix failed login notification (cosmetic), make it go to a new page with the error message
